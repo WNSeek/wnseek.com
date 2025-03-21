@@ -871,4 +871,41 @@ ul {
 
 .feature-card:nth-child(4) {
     transition-delay: 0.4s;
+}
+
+.language-switcher {
+    margin-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.language-switcher a {
+    padding: 5px 8px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+}
+
+.language-switcher a.active {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.lang-divider {
+    color: var(--text-light);
+    margin: 0 5px;
+}
+
+.language-switcher a::after {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .language-switcher {
+        margin-left: 0;
+        margin-top: 15px;
+        justify-content: center;
+    }
 } 
