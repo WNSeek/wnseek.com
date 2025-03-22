@@ -154,10 +154,31 @@ ul {
 
 .nav-menu ul {
     display: flex;
+    align-items: center;
 }
 
 .nav-menu li {
     margin-left: 32px;
+}
+
+/* 添加功能特点按钮样式 */
+.nav-menu .features-btn {
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+    border-radius: 30px;
+    padding: 8px 20px;
+    color: var(--primary-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-menu .features-btn:hover {
+    background-color: rgba(43, 134, 245, 0.08);
+    transform: translateY(-2px);
+}
+
+.nav-menu .features-btn::after {
+    display: none;
 }
 
 .nav-menu a {
@@ -874,7 +895,7 @@ ul {
 }
 
 .language-switcher {
-    margin-left: 30px;
+    margin-left: 20px;
     display: flex;
     align-items: center;
 }
