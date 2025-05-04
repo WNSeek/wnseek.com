@@ -62,5 +62,11 @@
 1. Fork 仓库
 2. 创建您的特性分支 (`git checkout -b feature/your-feature`)
 3. 提交您的更改 (`git commit -m 'Add some feature'`)
+
+## others
+https://linktr.ee/CarlSmith2025
+https://bento.me/carlsmith
+https://www.pinterest.com/CarlSmith2025/
+https://m.twitch.tv/carlsmith2025/home
 4. 推送到分支 (`git push origin feature/your-feature`)
 5. 创建一个新的Pull Request
