@@ -36,7 +36,7 @@ jobs:
       - name: 添加.nojekyll文件
         run: touch ./dist/.nojekyll
       - name: 上传构建产物
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: "./dist"
 
@@ -49,4 +49,4 @@ jobs:
     steps:
       - name: 部署到GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1 
+        uses: actions/deploy-pages@v2 
