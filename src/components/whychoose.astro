@@ -1,0 +1,76 @@
+---
+import { Icon } from "astro-icon/components";
+
+const reasons = [
+  {
+    title: "Save Time",
+    description: "No need to switch between multiple tabs. Get results from all your favorite platforms with a single search.",
+    icon: "mdi:clock-fast"
+  },
+  {
+    title: "Improve Efficiency",
+    description: "Consolidated results help you grasp core information at a glance, eliminating duplicate research efforts.",
+    icon: "mdi:chart-timeline-variant"
+  },
+  {
+    title: "Complete Coverage",
+    description: "WNSeek Max covers almost all mainstream search platforms, ensuring you never miss important information.",
+    icon: "mdi:earth"
+  },
+  {
+    title: "Privacy Protection",
+    description: "We don't collect your personal search data. Your search habits and history remain private.",
+    icon: "mdi:shield-check"
+  },
+  {
+    title: "Continuous Updates",
+    description: "We regularly add new search sources and optimize features to give you the best search experience.",
+    icon: "mdi:update"
+  }
+];
+---
+
+<div class="bg-slate-50 py-20">
+  <div class="mx-auto max-w-6xl px-4">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-4">
+      Why Choose WNSeek Max
+    </h2>
+    <p class="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-16">
+      Discover the advantages that make WNSeek Max the preferred choice for power users, researchers, and anyone who values efficient information retrieval.
+    </p>
+    
+    <div class="grid md:grid-cols-3 gap-10">
+      {
+        reasons.slice(0, 3).map((item) => (
+          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+            <div class="bg-black rounded-xl h-14 w-14 flex items-center justify-center mb-5">
+              <Icon name={item.icon} class="text-white size-7" />
+            </div>
+            <h3 class="font-semibold text-xl">{item.title}</h3>
+            <p class="text-slate-500 mt-2">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-10 mt-10 max-w-4xl mx-auto">
+      {
+        reasons.slice(3).map((item) => (
+          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+            <div class="bg-black rounded-xl h-14 w-14 flex items-center justify-center mb-5">
+              <Icon name={item.icon} class="text-white size-7" />
+            </div>
+            <h3 class="font-semibold text-xl">{item.title}</h3>
+            <p class="text-slate-500 mt-2">{item.description}</p>
+          </div>
+        ))
+      }
+    </div>
+    
+    <div class="text-center mt-16">
+      <a href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" class="bg-black text-white hover:bg-gray-800 px-8 py-3 rounded-md text-lg font-medium inline-block transition-colors">
+        Get WNSeek Max Today
+      </a>
+    </div>
+  </div>
+</div> 

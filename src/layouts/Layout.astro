@@ -1,0 +1,131 @@
+---
+import { SEO } from "astro-seo";
+import Footer from "@components/footer.astro";
+import Navbar from "@components/navbar/navbar.astro";
+import "@fontsource-variable/inter/index.css";
+import '@fontsource-variable/bricolage-grotesque';
+
+export interface Props {
+  title: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  "/opengraph.jpg",
+  Astro.site
+).toString();
+
+const { title } = Astro.props;
+
+const makeTitle = title
+  ? title + " | " + "WNSeek Max"
+  : "WNSeek Max - Multi-Platform Search Extension | Open URL | Open All URL Technology";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X30PXFQ017"></script>
+    <script is:inline>
+        // @ts-ignore
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            // @ts-ignore
+            dataLayer.push(arguments);
+        }
+        // @ts-ignore
+        gtag('js', new Date());
+        // @ts-ignore
+        gtag('config', 'G-X30PXFQ017');
+    </script>
+
+    <!-- Primary Meta Tags -->
+    <meta name="keywords" content="WNSeek, open URL, open all URL, multi-platform search, search extension, Chrome extension, search aggregator, search tool" />
+    <meta name="author" content="WNSeek Max" />
+
+    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <SEO
+      title={makeTitle}
+      description="WNSeek Max - Search across Google, Bing, and more with one click. Our open URL technology allows searching multiple platforms simultaneously. Save time with open all URL features and boost productivity with our powerful Chrome extension."
+      canonical={canonicalURL}
+      twitter={{
+        creator: "@wnseekmax",
+        site: "@wnseekmax",
+        card: "summary_large_image",
+      }}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: "website",
+          title: `WNSeek Max - Multi-Platform Search with Open URL Technology`,
+          image: resolvedImageWithDomain,
+        },
+        image: {
+          alt: "WNSeek Max Chrome Extension Screenshot",
+        },
+        optional: {
+          description: "Search multiple platforms simultaneously with WNSeek Max. Our open URL and open all URL features save time and boost productivity."
+        }
+      }}
+    />
+    
+    <!-- Structured Data for Rich Results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "WNSeek Max",
+        "operatingSystem": "Chrome, Firefox, Edge",
+        "applicationCategory": "BrowserApplication",
+        "applicationSubCategory": "Search Extension",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "ratingCount": "1",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "description": "WNSeek Max is a powerful multi-platform search extension with open URL technology allowing users to search across Google, Bing, and more search engines simultaneously. Save time with open all URL features and boost productivity.",
+        "featureList": "Multi-platform search, Open URL technology, Open all URLs, Time-saving",
+        "softwareVersion": "1.0",
+        "screenshot": {
+          "@type": "ImageObject",
+          "url": "https://wnseek.com/opengraph.jpg",
+          "caption": "WNSeek Max Interface"
+        },
+        "url": "https://wnseek.com",
+        "downloadUrl": "https://chrome.google.com/webstore/detail/wnseek-max/",
+        "author": {
+          "@type": "Organization",
+          "name": "WNSeek Max",
+          "url": "https://wnseek.com"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <Navbar />
+    <slot />
+    <Footer />
+    <style is:global>
+      /* Improve Page speed */
+      /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
+      img {
+        content-visibility: auto;
+      }
+    </style>
+  </body>
+</html>

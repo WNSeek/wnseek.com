@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components";
+import { Picture } from "astro:assets";
+import aiSearchImage from "assets/ai-search.png";
+---
+
+<div class="grid md:grid-cols-2 gap-10 mx-auto py-20">
+  <div class="flex flex-col justify-center">
+    <h2 class="text-4xl font-bold lg:tracking-tight">
+      AI Search Power at Your Fingertips
+    </h2>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      WNSeek Max seamlessly integrates with leading AI search engines, combining traditional search with artificial intelligence for more comprehensive results.
+    </p>
+
+    <ul class="grid mt-6 gap-4">
+      <li class="flex gap-2 items-start">
+        <div class="bg-black rounded-full p-1 mt-1">
+          <Icon name="mdi:check" class="text-white size-4" />
+        </div>
+        <span>Integration with ChatGPT for enhanced natural language searching</span>
+      </li>
+      <li class="flex gap-2 items-start">
+        <div class="bg-black rounded-full p-1 mt-1">
+          <Icon name="mdi:check" class="text-white size-4" />
+        </div>
+        <span>DeepSeek AI support for deeper contextual understanding</span>
+      </li>
+      <li class="flex gap-2 items-start">
+        <div class="bg-black rounded-full p-1 mt-1">
+          <Icon name="mdi:check" class="text-white size-4" />
+        </div>
+        <span>Google Bard compatibility for additional AI-powered insights</span>
+      </li>
+      <li class="flex gap-2 items-start">
+        <div class="bg-black rounded-full p-1 mt-1">
+          <Icon name="mdi:check" class="text-white size-4" />
+        </div>
+        <span>Switch between traditional and AI search with one click</span>
+      </li>
+    </ul>
+
+    <div class="flex mt-8">
+      <a href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800">
+        Try AI Search Now
+      </a>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center">
+    <div class="w-full max-w-md bg-slate-100 rounded-xl p-6 shadow-lg">
+      <div class="bg-white rounded-lg p-4 shadow-sm mb-4">
+        <div class="flex items-center mb-2">
+          <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
+            <Icon name="mdi:robot" class="text-white size-5" />
+          </div>
+          <span class="font-medium">AI Search Assistant</span>
+        </div>
+        <p class="text-slate-700 text-sm">I found multiple results for your query across different platforms. Would you like me to summarize the key findings?</p>
+      </div>
+      
+      <div class="flex gap-2 mb-4">
+        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm">Google</div>
+        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm">ChatGPT</div>
+        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm">DeepSeek</div>
+      </div>
+      
+      <p class="text-xs text-slate-500 text-center">WNSeek Max combines traditional search with AI capabilities</p>
+    </div>
+  </div>
+</div> 

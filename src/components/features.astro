@@ -1,0 +1,77 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "Multi-platform Integration",
+    description:
+      "WNSeek Max seamlessly integrates with Google, Baidu, Bing, and other major search engines. Our open URL technology enables search across multiple platforms from a single query interface.",
+    icon: "bx:bxs-data",
+  },
+  {
+    title: "Customizable Search Experience",
+    description:
+      "Configure search engines and platforms according to your specific needs with WNSeek Max. Our customizable open all URL features adapt to your workflows and search preferences.",
+    icon: "bx:bxs-cog",
+  },
+  {
+    title: "One-click Platform Switching",
+    description:
+      "Switch between different search engines instantly with WNSeek's intelligent navigation. Maintain search continuity across platforms without re-entering keywords.",
+    icon: "bx:bxs-mouse",
+  },
+  {
+    title: "Advanced AI Search Integration",
+    description:
+      "WNSeek Max bridges traditional search engines with AI-powered tools like ChatGPT and DeepSeek. Get comprehensive results by combining conventional search with artificial intelligence capabilities.",
+    icon: "bx:bxs-bot",
+  },
+  {
+    title: "Enhanced Privacy Protection",
+    description:
+      "Your search data stays private with WNSeek Max. Unlike other tools, we don't track your search behavior or collect personal data while using our open URL and open all URL features.",
+    icon: "bx:bxs-shield",
+  },
+  {
+    title: "Intuitive User Interface",
+    description:
+      "WNSeek Max offers an elegant, distraction-free design with both light and dark mode support. Our focus on usability makes multi-platform searching efficient and comfortable.",
+    icon: "bx:bxs-layout",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight" id="features">
+    WNSeek Max: Powerful Open URL Technology for Efficient Searching
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    WNSeek Max transforms how you search the web with its innovative features. Our open URL technology and open all URL capabilities significantly enhance productivity for researchers, developers, and everyday users.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<div class="mt-24 text-center">
+  <span class="bg-black text-white py-1 px-3 rounded-md text-sm">NEW</span>
+  <h3 class="text-xl mt-3 font-semibold">Semantic Search & Context Awareness</h3>
+  <p class="text-slate-600 mt-2 max-w-3xl mx-auto">
+    WNSeek Max now features improved semantic understanding of search queries, 
+    delivering more relevant results across all integrated platforms through our enhanced open URL technology.
+  </p>
+</div>

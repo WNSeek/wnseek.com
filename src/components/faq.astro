@@ -1,0 +1,56 @@
+---
+const faqs = [
+  {
+    question: "What is WNSeek Max?",
+    answer: "WNSeek Max is a powerful multi-platform aggregated search tool designed as a browser extension. It allows you to quickly find information across multiple search engines, social platforms, AI tools, and professional websites simultaneously, significantly improving your information retrieval efficiency."
+  },
+  {
+    question: "Which search platforms does WNSeek Max support?",
+    answer: "WNSeek Max supports a wide range of platforms including Google, Bing, DuckDuckGo, Baidu, GitHub, Stack Overflow, Reddit, Twitter, YouTube, and many specialized academic and news search engines. The list of supported platforms is regularly updated."
+  },
+  {
+    question: "How does the open URL feature work?",
+    answer: "The open URL feature allows you to automatically open search results in new tabs from different platforms with a single query. This eliminates the need to manually re-enter your search term on multiple websites."
+  },
+  {
+    question: "Can I customize which search engines are used?",
+    answer: "Yes, WNSeek Max allows you to fully customize which search engines are included in your searches. You can create and save multiple search combinations for different use cases, and adjust the order and display status of each search engine."
+  },
+  {
+    question: "Does WNSeek Max collect my search data?",
+    answer: "No. WNSeek Max prioritizes your privacy and does not collect your personal search data. Your search habits and history remain completely private."
+  },
+  {
+    question: "Is WNSeek Max compatible with AI search tools?",
+    answer: "Yes, WNSeek Max integrates with several AI search tools including ChatGPT, DeepSeek, and Google Bard, combining traditional search with AI capabilities for more comprehensive results."
+  }
+];
+---
+
+<div class="mx-auto max-w-5xl px-4 py-20">
+  <h2 class="text-4xl font-bold lg:tracking-tight text-center mb-8">
+    Frequently Asked Questions
+  </h2>
+  
+  <div class="grid gap-6">
+    {
+      faqs.map((item, index) => (
+        <div class="border border-gray-200 rounded-lg p-6 shadow-sm bg-white">
+          <h3 class="text-xl font-medium mb-2">
+            {index + 1}. {item.question}
+          </h3>
+          <p class="text-slate-600">{item.answer}</p>
+        </div>
+      ))
+    }
+  </div>
+  
+  <div class="text-center mt-12">
+    <p class="text-lg text-slate-600 mb-6">
+      Still have questions? Contact us for more information.
+    </p>
+    <a href="mailto:wnseekmax@gmail.com" class="text-black font-medium hover:underline">
+      wnseekmax@gmail.com
+    </a>
+  </div>
+</div> 

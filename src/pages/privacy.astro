@@ -1,0 +1,69 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Breadcrumbs from "@components/ui/Breadcrumbs.astro";
+
+// Define the breadcrumb trail
+const breadcrumbItems = [
+  { text: 'Home', href: '/' },
+  { text: 'Privacy Policy' } 
+];
+---
+
+<Layout title="Privacy Policy | WNSeek Max">
+  <Container>
+    <Breadcrumbs items={breadcrumbItems} class="mt-8" />
+    <div class="prose max-w-none mt-4 mb-20">
+      <h1>WNSeek Max Privacy Policy</h1>
+      <p><strong>Effective Date:</strong> January 1, 2025</p>
+
+      <p>Thank you for using the WNSeek Max browser extension (hereinafter referred to as "we" or "WNSeek Max"). We are committed to protecting your privacy and personal data, and complying with applicable privacy regulations.</p>
+      <p>This Privacy Policy is designed to inform you about what personal data we collect, and how we use, share, and protect this data.</p>
+
+      <h2>1. Personal Data We Collect</h2>
+      <p>When using the WNSeek Max extension, we may collect the following types of personal data:</p>
+      <ul>
+        <li><strong>Search Queries:</strong> When you use WNSeek Max to perform searches, we may temporarily process your search queries to provide service functionality.</li>
+        <li><strong>Device Information:</strong> We may collect basic information related to your device, such as device type, operating system version, and browser type, to ensure the normal operation of the extension.</li>
+        <li><strong>Usage Data:</strong> We may collect anonymous statistical data about how you use the extension, such as feature usage frequency and search platform preferences.</li>
+      </ul>
+
+      <h2>2. Data Usage</h2>
+      <p>The personal data we collect will be used for the following purposes:</p>
+      <ul>
+        <li><strong>Providing Services:</strong> We use the collected data to perform the core functions of the WNSeek Max extension, helping you conduct multi-platform aggregated searches.</li>
+        <li><strong>Improving the Extension:</strong> We may use anonymous usage data to analyze user behavior and continuously improve and optimize the functionality and performance of the WNSeek Max extension.</li>
+        <li><strong>Technical Support:</strong> We may use the collected information to resolve technical issues and provide customer support.</li>
+      </ul>
+
+      <h2>3. Data Sharing</h2>
+      <p>We do not sell, rent, or share your personal data with any third parties unless we have your explicit consent or are required by law. However, in the following circumstances, we may share data with third parties:</p>
+      <ul>
+        <li><strong>Service Providers:</strong> We may share anonymous data with partners who provide hosting, analytics, and other services to support the operation of the WNSeek Max extension.</li>
+        <li><strong>Legal Requirements:</strong> If there is reasonable cause to believe disclosure of your personal data is necessary to comply with applicable laws, regulations, legal processes, or government requests, we may disclose such information.</li>
+      </ul>
+
+      <h2>4. Data Protection</h2>
+      <p>We take appropriate technical and organizational measures to protect your personal data from unauthorized access, use, or disclosure. We strive to ensure the security and privacy protection of data processing.</p>
+      <p>However, you understand that data transmission over the internet has inherent risks, and we cannot guarantee absolute data security.</p>
+
+      <h2>5. User Control</h2>
+      <p>WNSeek Max respects your control over your personal data:</p>
+      <ul>
+        <li>You can disable or uninstall our extension in your browser settings at any time.</li>
+        <li>You can adjust search engine and platform preferences through the extension settings.</li>
+      </ul>
+
+      <h2>6. Updates to Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time based on product feature changes and legal regulatory updates. You will be notified of the updated Privacy Policy through appropriate means before it takes effect.</p>
+
+      <h2>7. Contact Us</h2>
+      <p>If you have any questions or concerns about this Privacy Policy or the data processing of the WNSeek Max extension, please contact us through the following contact information:</p>
+      <p>Email: <a href="mailto:wnseekmax@gmail.com">wnseekmax@gmail.com</a></p>
+
+      <p>Please note that this Privacy Policy applies only to the WNSeek Max browser extension, not to our website or other services.</p>
+
+      <p>Thank you for reading our Privacy Policy. We hope the WNSeek Max extension brings you a pleasant search experience!</p>
+    </div>
+  </Container>
+</Layout> 

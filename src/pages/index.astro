@@ -1,0 +1,49 @@
+---
+import Container from "@components/container.astro";
+import Cta from "@components/cta.astro";
+import Features from "@components/features.astro";
+import Hero from "@components/hero.astro";
+import Logos from "@components/logos.astro";
+import Layout from "@layouts/Layout.astro";
+// Import new components
+import UseCases from "@components/usecases.astro";
+import AIIntegration from "@components/aiintegration.astro";
+import WhyChoose from "@components/whychoose.astro";
+import FAQ from "@components/faq.astro";
+---
+
+<Layout title="">
+  <Container>
+    <Hero />
+    <Features />
+    <Logos />
+  </Container>
+  
+  <!-- Add AI Integration section -->
+  <Container>
+    <AIIntegration />
+  </Container>
+  
+  <!-- Add Use Cases section with ID for anchor link -->
+  <Container>
+    <div id="usecases">
+      <UseCases />
+    </div>
+  </Container>
+  
+  <!-- Add Why Choose section -->
+  <div id="whychoose">
+    <WhyChoose />
+  </div>
+  
+  <!-- Add FAQ section -->
+  <Container>
+    <div id="faq">
+      <FAQ />
+    </div>
+  </Container>
+  
+  <Container>
+    <Cta />
+  </Container>
+</Layout>

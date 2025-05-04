@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# WNSeek Max - Multi-Platform Search Extension
+# https://wnseek.com
+
+Sitemap: https://wnseek.com/sitemap-index.xml

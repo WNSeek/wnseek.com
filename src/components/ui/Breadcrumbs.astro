@@ -1,0 +1,34 @@
+---
+import { Icon } from "astro-icon/components";
+
+export interface BreadcrumbItem {
+  text: string;
+  href?: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<nav aria-label="Breadcrumb" class:list={["text-sm text-slate-500 mb-4", className]}>
+  <ol class="flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+    {items.map((item, index) => (
+      <li class="inline-flex items-center">
+        {index > 0 && (
+          <Icon name="mdi:chevron-right" class="rtl:rotate-180 w-4 h-4 text-slate-400 mx-1" />
+        )}
+        {item.href ? (
+          <a href={item.href} class="inline-flex items-center hover:text-slate-700 hover:underline">
+            {item.text}
+          </a>
+        ) : (
+          <span class="font-medium text-slate-700">{item.text}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav> 

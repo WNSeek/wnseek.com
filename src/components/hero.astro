@@ -1,0 +1,54 @@
+---
+import { Picture } from "astro:assets";
+import heroImage from "assets/hero.png";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<main
+  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="py-6 md:order-1 hidden md:block">
+    <Picture
+      src={heroImage}
+      alt="WNSeek Max - Multi-platform search tool with open URL technology"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 800px) 100vw, 620px"
+      loading="eager"
+      format="avif"
+    />
+  </div>
+  <div>
+    <h1
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      <span class="text-black">WNSeek Max:</span> Open URL Search Across All Platforms
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      WNSeek Max is the ultimate Chrome extension for searching <strong>multiple platforms simultaneously</strong>. Our innovative <strong>open URL</strong> and <strong>open all URL</strong> technology allows you to search Google, Baidu, Bing, and other search engines with a single click, saving time and boosting productivity.
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link
+        href="/WNSeek_V1.0.1.zip"        
+        target="_blank"
+        class="flex gap-1 items-center justify-center"
+        rel="noopener">
+        <Icon class="text-white w-5 h-5" name="mdi:cloud-download-outline" />
+         Download WNSeek Max
+      </Link>
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" 
+        class="flex gap-1 items-center justify-center"
+        target="_blank">
+        <Icon class="text-black w-4 h-4" name="mdi:google-chrome" />
+         Get on Chrome
+      </Link>
+    </div>
+    <p class="text-sm mt-4 text-slate-500">
+      <span class="bg-slate-100 px-2 py-1 rounded">100% Free</span> • 
+      <span class="bg-slate-100 px-2 py-1 rounded">Privacy Focused</span> • 
+      <span class="bg-slate-100 px-2 py-1 rounded">AI Integration</span>
+    </p>
+  </div>
+</main>

@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+
+const useCases = [
+  {
+    title: "Academic Research",
+    description: "Students can collect comprehensive materials across multiple platforms for research papers and academic projects.",
+    icon: "mdi:school"
+  },
+  {
+    title: "Developer Solutions",
+    description: "Programmers can find solutions to technical problems by searching GitHub, Stack Overflow, and documentation sites simultaneously.",
+    icon: "mdi:code-braces"
+  },
+  {
+    title: "Market Research",
+    description: "Professionals can conduct thorough market research by accessing and comparing data from various sources.",
+    icon: "mdi:chart-line"
+  },
+  {
+    title: "Shopping Comparison",
+    description: "Consumers can compare prices and reviews across multiple e-commerce platforms with a single search query.",
+    icon: "mdi:cart"
+  },
+  {
+    title: "News Gathering",
+    description: "Journalists and researchers can quickly access information from multiple news sources to get comprehensive coverage.",
+    icon: "mdi:newspaper"
+  }
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
+    Perfect for Every Search Scenario
+  </h2>
+  <p class="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-16">
+    WNSeek Max is designed to enhance productivity across various use cases. See how our open URL technology can transform your search workflow.
+  </p>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
+    {
+      useCases.map((item) => (
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200">
+          <div class="text-center">
+            <div class="bg-black rounded-full h-12 w-12 flex items-center justify-center mx-auto">
+              <Icon name={item.icon} class="text-white size-6" />
+            </div>
+            <h3 class="font-semibold text-xl mt-4">{item.title}</h3>
+            <p class="text-slate-500 mt-2">{item.description}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</div> 
