@@ -38,7 +38,7 @@ WNSeek Max is an efficient multi-platform aggregated search tool designed as a C
 1.  Clone the repository:
     ```bash
     git clone <your-repository-url>
-    cd wnseekmax2 
+    cd wnseek.com 
     ```
 2.  Install dependencies:
     ```bash
