@@ -135,8 +135,8 @@ Copyright © 2025 WNSeek Max. All rights reserved.
 
 ## Other Productions
 
-* **Products in Linktr:** https://linktr.ee/CarlSmith2025
-* **Products in Bento:** https://bento.me/carlsmith
-* **Products in Pinterset:** https://www.pinterest.com/CarlSmith2025/
-* **Products in twitch:** https://m.twitch.tv/carlsmith2025/home
-
+* **Products in Linktr:** [https://linktr.ee/CarlSmith2025](https://linktr.ee/CarlSmith2025)
+* **Products in Bento:** [https://bento.me/carlsmith](https://bento.me/carlsmith)
+* **Products in Pinterset:** [https://www.pinterest.com/CarlSmith2025/](https://www.pinterest.com/CarlSmith2025/)
+* **Products in twitch:** [https://m.twitch.tv/carlsmith2025/home](https://m.twitch.tv/carlsmith2025/home
+)
