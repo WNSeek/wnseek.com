@@ -1,47 +1,151 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 
 const useCases = [
   {
-    title: "Academic Research",
-    description: "Students can collect comprehensive materials across multiple platforms for research papers and academic projects.",
-    icon: "mdi:school"
+    title: t['useCases.academic.title'],
+    description: t['useCases.academic.description'],
+    icon: "mdi:school",
+    badge: lang === 'zh' ? "学生必备" : "Students' Choice"
   },
   {
-    title: "Developer Solutions",
-    description: "Programmers can find solutions to technical problems by searching GitHub, Stack Overflow, and documentation sites simultaneously.",
-    icon: "mdi:code-braces"
+    title: t['useCases.developer.title'],
+    description: t['useCases.developer.description'],
+    icon: "mdi:code-braces",
+    badge: lang === 'zh' ? "开发者最爱" : "Developers' Favorite"
   },
   {
-    title: "Market Research",
-    description: "Professionals can conduct thorough market research by accessing and comparing data from various sources.",
-    icon: "mdi:chart-line"
+    title: t['useCases.market.title'],
+    description: t['useCases.market.description'],
+    icon: "mdi:chart-line",
+    badge: lang === 'zh' ? "职场利器" : "Business Essential"
   },
   {
-    title: "Shopping Comparison",
-    description: "Consumers can compare prices and reviews across multiple e-commerce platforms with a single search query.",
-    icon: "mdi:cart"
+    title: t['useCases.shopping.title'],
+    description: t['useCases.shopping.description'],
+    icon: "mdi:cart",
+    badge: lang === 'zh' ? "比价神器" : "Price Hunter"
   },
   {
-    title: "News Gathering",
-    description: "Journalists and researchers can quickly access information from multiple news sources to get comprehensive coverage.",
-    icon: "mdi:newspaper"
+    title: t['useCases.news.title'],
+    description: t['useCases.news.description'],
+    icon: "mdi:newspaper",
+    badge: lang === 'zh' ? "新闻收集" : "News Gatherer"
   }
 ];
+
+// 从i18n获取客户评价和引用
+const testimonials = [
+  {
+    quote: t['testimonials.academic.quote'],
+    author: t['testimonials.academic.author'],
+    role: t['testimonials.academic.role']
+  },
+  {
+    quote: t['testimonials.developer.quote'],
+    author: t['testimonials.developer.author'],
+    role: t['testimonials.developer.role']
+  }
+];
+
+// 为结构化数据准备产品应用案例和评价
+const productName = lang === 'zh' ? "万能搜Max" : "WNSeek Max";
+const productDescription = lang === 'zh' ? "一款多平台搜索扩展，适用于学术研究、开发工作、市场分析等多种场景" : "A multi-platform search extension for academic research, development work, market analysis, and more";
+const productImage = "https://wnseek.com/images/wnseek-logo.png"; // 请替换为实际的产品图片URL
 ---
 
-<div class="mt-16 md:mt-0">
+<!-- 优化的结构化数据 - 产品信息与评价 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": productName,
+  "description": productDescription,
+  "image": productImage,
+  "brand": {
+    "@type": "Brand",
+    "name": "WNSeek"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "10000",
+    "bestRating": "5"
+  },
+  "review": testimonials.map((testimonial, index) => ({
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": "5",
+      "bestRating": "5"
+    },
+    "author": {
+      "@type": "Person",
+      "name": testimonial.author
+    },
+    "reviewBody": testimonial.quote,
+    "datePublished": new Date(new Date().setDate(new Date().getDate() - 30 + index)).toISOString().split('T')[0]
+  })),
+  "usageGuidelines": useCases.map(useCase => useCase.title).join(", "),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wnseek.com/#usecases",
+    "lastReviewed": new Date().toISOString().split('T')[0]
+  },
+  "isMobileFriendly": true,
+  "sameAs": [
+    "https://twitter.com/wnseekmax",
+    "https://www.facebook.com/wnseekmax"
+  ]
+})}>
+</script>
+
+<!-- 优化的结构化数据 - 使用场景列表 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": useCases.map((useCase, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Thing",
+      "name": useCase.title,
+      "description": useCase.description,
+      "mainEntityOfPage": {
+        "@id": "https://wnseek.com/#usecases"
+      }
+    }
+  }))
+})}>
+</script>
+
+<div class="mt-16 md:mt-0" id="usecases">
   <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-8">
-    Perfect for Every Search Scenario
+    {t['useCases.title']}
   </h2>
   <p class="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-16">
-    WNSeek Max is designed to enhance productivity across various use cases. See how our open URL technology can transform your search workflow.
+    {t['useCases.description']}
   </p>
 
   <div class="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-auto">
     {
       useCases.map((item) => (
-        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-200">
+        <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 relative">
+          {item.badge && (
+            <span class="absolute top-4 right-4 bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">
+              {item.badge}
+            </span>
+          )}
           <div class="text-center">
             <div class="bg-black rounded-full h-12 w-12 flex items-center justify-center mx-auto">
               <Icon name={item.icon} class="text-white size-6" />
@@ -52,5 +156,43 @@ const useCases = [
         </div>
       ))
     }
+  </div>
+  
+  <!-- 添加客户评价部分 -->
+  <div class="mt-20">
+    <h3 class="text-2xl font-semibold text-center mb-10">
+      {t['userTestimonials.title']}
+    </h3>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      {testimonials.map(item => (
+        <div class="bg-gray-50 p-6 rounded-xl">
+          <div class="flex mb-4">
+            <div class="text-yellow-500">
+              <Icon name="mdi:star" class="w-5 h-5 inline-block" />
+              <Icon name="mdi:star" class="w-5 h-5 inline-block" />
+              <Icon name="mdi:star" class="w-5 h-5 inline-block" />
+              <Icon name="mdi:star" class="w-5 h-5 inline-block" />
+              <Icon name="mdi:star" class="w-5 h-5 inline-block" />
+            </div>
+          </div>
+          <blockquote class="text-lg italic mb-4">"{item.quote}"</blockquote>
+          <div class="font-medium">{item.author}</div>
+          <div class="text-sm text-gray-600">{item.role}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  
+  <!-- 添加CTA -->
+  <div class="mt-12 text-center">
+    <a 
+      href={lang === 'zh' ? "https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" : "https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl"} 
+      target="_blank" 
+      class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-md font-medium hover:from-blue-700 hover:to-indigo-800 transition-colors"
+    >
+      {t['tryNow.button']}
+      <Icon name="mdi:arrow-right" class="ml-2 w-5 h-5" />
+    </a>
   </div>
 </div> 

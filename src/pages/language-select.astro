@@ -1,0 +1,54 @@
+---
+import { languages, defaultLang } from '../i18n/ui';
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+
+// 获取客户端的Accept-Language头
+const acceptLanguage = Astro.request.headers.get('accept-language') || '';
+
+// 提取首选语言
+let preferredLanguage = defaultLang;
+const languageCodes = Object.keys(languages);
+
+// 遍历Accept-Language头部的语言列表
+const languagePreferences = acceptLanguage.split(',')
+  .map(item => {
+    const [lang, qValue = 'q=1.0'] = item.trim().split(';');
+    const q = parseFloat(qValue.substring(2)) || 0;
+    return { lang: lang.substring(0, 2), q };
+  })
+  .sort((a, b) => b.q - a.q);
+
+// 查找匹配的语言
+for (const { lang } of languagePreferences) {
+  if (languageCodes.includes(lang)) {
+    preferredLanguage = lang;
+    break;
+  }
+}
+
+// 如果是默认语言，保持在根目录，否则重定向到语言路径
+let redirectPath = preferredLanguage === defaultLang 
+  ? '/en/' 
+  : `/${preferredLanguage}/`;
+
+return Astro.redirect(redirectPath);
+---
+
+<!-- 这个页面不会实际被渲染，因为已经重定向 -->
+<Layout title="选择语言 | Select Language">
+  <Container>
+    <div class="flex flex-col items-center justify-center min-h-[70vh]">
+      <h1 class="text-4xl font-bold mb-8">选择语言 | Select Language</h1>
+      <div class="flex gap-4">
+        {Object.entries(languages).map(([lang, label]) => (
+          <a 
+            href={`/${lang === defaultLang ? 'en' : lang}/`}
+            class="px-6 py-3 text-lg rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            {label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </Container>
+</Layout> 

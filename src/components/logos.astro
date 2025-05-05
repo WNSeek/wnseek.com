@@ -1,12 +1,16 @@
 ---
 // @ts-ignore
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 ---
 
 <div class="mt-24" aria-label="Supported search platforms">
-  <h2 class="text-center text-2xl font-bold text-gray-800 mb-2">WNSeek Max supports major search platforms with Open URL technology</h2>
+  <h2 class="text-center text-2xl font-bold text-gray-800 mb-2">{t['logos.title']}</h2>
   <p class="text-center text-slate-600 mb-10 max-w-3xl mx-auto">
-    Connect with all your favorite platforms through a single search interface. WNSeek Max's open URL technology brings together the entire search ecosystem.
+    {t['logos.description']}
   </p>
   
   <div class="flex flex-wrap gap-8 md:gap-20 items-center justify-center mt-10">
@@ -46,14 +50,14 @@ import { Icon } from "astro-icon/components";
   
   <div class="bg-slate-50 p-6 rounded-xl mt-12 max-w-3xl mx-auto">
     <p class="text-center font-medium mb-2 text-slate-800">
-      Unified Search Experience
+      {t['logos.unified.title']}
     </p>
     <p class="text-center text-slate-600">
-      WNSeek Max's open URL technology enables seamless searching across all these platforms with a single query. Open multiple results simultaneously with our innovative open all URL feature - saving you time and increasing research efficiency.
+      {t['logos.unified.description']}
     </p>
     <div class="flex justify-center mt-4">
       <a href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" class="text-blue-600 hover:underline font-medium">
-        Try WNSeek Max Today →
+        {t['logos.try']}
       </a>
     </div>
   </div>

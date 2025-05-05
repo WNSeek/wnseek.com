@@ -1,0 +1,66 @@
+{
+  "global": {
+    "siteName": "WNSeek Max",
+    "siteDescription": "Agrégateur de Recherche Multi-Plateforme",
+    "siteKeywords": "agrégation de recherche, multi-plateforme, outil de recherche, productivité, URL ouverte"
+  },
+  "pages": {
+    "home": {
+      "title": "WNSeek Max: Agrégateur de Recherche Multi-Plateforme",
+      "description": "Le compagnon de recherche ultime qui vous permet de chercher sur plusieurs plateformes simultanément. Notre technologie innovante d'URL ouverte fournit des résultats complets de Google, Bing, DuckDuckGo, plateformes sociales et outils d'IA - vous faisant gagner du temps et améliorant votre productivité.",
+      "keywords": "agrégation de recherche, multi-plateforme, outil de recherche, productivité, outils d'IA",
+      "ogImage": "/images/og-home-fr.jpg"
+    },
+    "features": {
+      "title": "Fonctionnalités de WNSeek Max | Outil de Recherche Multi-Plateforme",
+      "description": "Découvrez les puissantes fonctionnalités de WNSeek Max - recherche multi-plateforme, expérience de recherche personnalisable, changement de plateforme en un clic, intégration de moteurs de recherche IA et plus encore.",
+      "keywords": "recherche multi-plateforme, recherche personnalisable, intégration IA, protection de la confidentialité",
+      "ogImage": "/images/og-features-fr.jpg"
+    },
+    "useCases": {
+      "title": "Cas d'Utilisation de WNSeek Max | Parfait pour Chaque Scénario de Recherche",
+      "description": "Découvrez comment utiliser WNSeek Max dans divers cas d'utilisation tels que la recherche académique, les solutions pour développeurs, l'étude de marché, la comparaison d'achats et la collecte d'actualités.",
+      "keywords": "recherche académique, outils développeur, étude de marché, comparaison d'achats, collecte d'actualités",
+      "ogImage": "/images/og-usecases-fr.jpg"
+    },
+    "whyChoose": {
+      "title": "Pourquoi Choisir WNSeek Max | Solution de Recherche Efficace",
+      "description": "Découvrez pourquoi WNSeek Max est le meilleur outil de recherche - gain de temps, amélioration de l'efficacité, couverture complète, protection de la vie privée et mises à jour continues.",
+      "keywords": "gain de temps, efficacité de recherche, couverture de recherche, protection de la vie privée, mises à jour de recherche",
+      "ogImage": "/images/og-whychoose-fr.jpg"
+    },
+    "faq": {
+      "title": "Questions Fréquemment Posées sur WNSeek Max | FAQ Outil de Recherche",
+      "description": "Trouvez des réponses aux questions fréquemment posées sur WNSeek Max. Nous répondons à vos questions sur les fonctionnalités, la compatibilité, la confidentialité et l'utilisation.",
+      "keywords": "FAQ WNSeek, questions outil de recherche, aide recherche multi-plateforme, guide outil de recherche",
+      "ogImage": "/images/og-faq-fr.jpg"
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "WNSeek",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/wnseek",
+        "https://twitter.com/wnseek",
+        "https://www.linkedin.com/company/wnseek"
+      ]
+    },
+    "product": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WNSeek Max",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows, Mac, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Agrégateur de Recherche Multi-Plateforme"
+    }
+  }
+} 

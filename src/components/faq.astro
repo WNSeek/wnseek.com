@@ -1,56 +1,208 @@
 ---
+import { getLangFromUrl, ui } from '../i18n/ui';
+import { Icon } from "astro-icon/components";
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
+
 const faqs = [
   {
-    question: "What is WNSeek Max?",
-    answer: "WNSeek Max is a powerful multi-platform aggregated search tool designed as a browser extension. It allows you to quickly find information across multiple search engines, social platforms, AI tools, and professional websites simultaneously, significantly improving your information retrieval efficiency."
+    question: t['faq.q1'],
+    answer: t['faq.a1']
   },
   {
-    question: "Which search platforms does WNSeek Max support?",
-    answer: "WNSeek Max supports a wide range of platforms including Google, Bing, DuckDuckGo, Baidu, GitHub, Stack Overflow, Reddit, Twitter, YouTube, and many specialized academic and news search engines. The list of supported platforms is regularly updated."
+    question: t['faq.q2'],
+    answer: t['faq.a2']
   },
   {
-    question: "How does the open URL feature work?",
-    answer: "The open URL feature allows you to automatically open search results in new tabs from different platforms with a single query. This eliminates the need to manually re-enter your search term on multiple websites."
+    question: t['faq.q3'],
+    answer: t['faq.a3']
   },
   {
-    question: "Can I customize which search engines are used?",
-    answer: "Yes, WNSeek Max allows you to fully customize which search engines are included in your searches. You can create and save multiple search combinations for different use cases, and adjust the order and display status of each search engine."
+    question: t['faq.q4'],
+    answer: t['faq.a4']
   },
   {
-    question: "Does WNSeek Max collect my search data?",
-    answer: "No. WNSeek Max prioritizes your privacy and does not collect your personal search data. Your search habits and history remain completely private."
+    question: t['faq.q5'],
+    answer: t['faq.a5']
   },
   {
-    question: "Is WNSeek Max compatible with AI search tools?",
-    answer: "Yes, WNSeek Max integrates with several AI search tools including ChatGPT, DeepSeek, and Google Bard, combining traditional search with AI capabilities for more comprehensive results."
+    question: t['faq.q6'],
+    answer: t['faq.a6']
   }
 ];
+
+// 从i18n获取额外的FAQ
+const additionalFaqs = [
+  {
+    question: t['faq.shortcuts.question'],
+    answer: t['faq.shortcuts.answer']
+  },
+  {
+    question: t['faq.update.question'],
+    answer: t['faq.update.answer']
+  }
+];
+
+// 合并所有FAQ
+const allFaqs = [...faqs, ...additionalFaqs];
+
+// 从i18n获取搜索技巧数据
+const searchTips = [
+  {
+    title: t['searchTips.quick.title'],
+    icon: "mdi:lightning-bolt",
+    description: t['searchTips.quick.description']
+  },
+  {
+    title: t['searchTips.custom.title'],
+    icon: "mdi:puzzle",
+    description: t['searchTips.custom.description']
+  },
+  {
+    title: t['searchTips.dark.title'],
+    icon: "mdi:theme-light-dark",
+    description: t['searchTips.dark.description']
+  }
+];
+
+const productName = lang === 'zh' ? "万能搜Max" : "WNSeek Max";
+const currentDate = new Date().toISOString().split('T')[0];
 ---
 
-<div class="mx-auto max-w-5xl px-4 py-20">
+<!-- 优化的结构化数据 - FAQ页面 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": allFaqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  })),
+  "isPartOf": {
+    "@type": "WebPage",
+    "@id": "https://wnseek.com/#faq",
+    "lastReviewed": currentDate
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": productName,
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "SearchTool"
+  },
+  "inLanguage": lang === 'zh' ? "zh-CN" : "en-US",
+  "isMobileFriendly": true,
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h2", "summary h3"]
+  }
+})}>
+</script>
+
+<!-- 优化的结构化数据 - 搜索技巧 HowTo -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": lang === 'zh' ? "搜索小技巧" : "Search Tips",
+  "description": lang === 'zh' ? "如何有效使用万能搜Max进行搜索" : "How to effectively use WNSeek Max for searching",
+  "step": searchTips.map((tip, index) => ({
+    "@type": "HowToStep",
+    "position": index + 1,
+    "name": tip.title,
+    "text": tip.description,
+    "image": {
+      "@type": "ImageObject",
+      "url": `https://wnseek.com/images/tips/${tip.icon.split(':')[1]}.png` // 假设的图片URL路径
+    }
+  })),
+  "tool": {
+    "@type": "HowToTool",
+    "name": productName
+  },
+  "totalTime": "PT2M", // 假设学习这些技巧需要2分钟时间
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": "0"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wnseek.com/#search-tips"
+  }
+})}>
+</script>
+
+<div class="mx-auto max-w-5xl px-4 py-20" id="faq">
   <h2 class="text-4xl font-bold lg:tracking-tight text-center mb-8">
-    Frequently Asked Questions
+    {t['faq.title']}
   </h2>
   
-  <div class="grid gap-6">
+  <div class="grid gap-4">
     {
-      faqs.map((item, index) => (
-        <div class="border border-gray-200 rounded-lg p-6 shadow-sm bg-white">
-          <h3 class="text-xl font-medium mb-2">
-            {index + 1}. {item.question}
-          </h3>
-          <p class="text-slate-600">{item.answer}</p>
+      allFaqs.map((item, index) => (
+        <div class="border border-gray-200 rounded-lg shadow-sm bg-white overflow-hidden">
+          <details class="group">
+            <summary class="flex justify-between items-center p-6 cursor-pointer">
+              <h3 class="text-xl font-medium">
+                {item.question}
+              </h3>
+              <span class="ml-6 flex-shrink-0 text-gray-500 group-open:rotate-180 transition-transform">
+                <Icon name="mdi:chevron-down" class="size-6" />
+              </span>
+            </summary>
+            <div class="px-6 pb-6 text-slate-600 border-t border-gray-100 pt-4">
+              {item.answer}
+            </div>
+          </details>
         </div>
       ))
     }
   </div>
   
+  <!-- 添加搜索提示部分 -->
+  <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl mt-12" id="search-tips">
+    <h3 class="text-xl font-semibold mb-4 text-center">
+      {t['searchTips.title']}
+    </h3>
+    <div class="grid md:grid-cols-3 gap-6">
+      {searchTips.map(tip => (
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <div class="flex items-center mb-3">
+            <div class="bg-blue-100 text-blue-600 p-2 rounded-full mr-3">
+              <Icon name={tip.icon} class="size-6" />
+            </div>
+            <h4 class="font-medium">{tip.title}</h4>
+          </div>
+          <p class="text-sm text-slate-600">
+            {tip.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+  
   <div class="text-center mt-12">
     <p class="text-lg text-slate-600 mb-6">
-      Still have questions? Contact us for more information.
+      {t['faq.stillQuestions']}
     </p>
-    <a href="mailto:wnseekmax@gmail.com" class="text-black font-medium hover:underline">
-      wnseekmax@gmail.com
-    </a>
+    <div class="flex justify-center gap-4">
+      <a href="mailto:wnseekmax@gmail.com" class="flex items-center text-black font-medium hover:underline">
+        <Icon name="mdi:email" class="size-5 mr-2" />
+        wnseekmax@gmail.com
+      </a>
+      <a href="https://twitter.com/wnseekmax" class="flex items-center text-black font-medium hover:underline">
+        <Icon name="mdi:twitter" class="size-5 mr-2" />
+        @wnseekmax
+      </a>
+    </div>
   </div>
-</div> 
+</div>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style> 

@@ -1,29 +1,33 @@
 ---
 import Link from "./ui/link.astro";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 ---
 
 <div
   class="bg-black p-8 md:px-20 md:py-20 mt-20 mx-auto max-w-5xl rounded-lg flex flex-col items-center text-center">
   <span class="text-white text-sm font-medium bg-blue-600 py-1 px-3 rounded-md mb-4">POWERFUL SEARCH TOOL</span>
   <h2 class="text-white text-4xl md:text-6xl tracking-tight">
-    Transform Your Search Experience Today
+    {t['cta.title']}
   </h2>
   <p class="text-slate-400 mt-6 text-lg md:text-xl max-w-3xl">
-    Join thousands of users who are saving time with WNSeek Max's open URL technology. Our open all URL features make searching across multiple platforms effortless, increasing your productivity by up to 70%.
+    {t['cta.subtitle']}
   </p>
   
   <div class="flex flex-col sm:flex-row mt-8 gap-4">
     <Link href="/WNSeek_V1.0.1.zip" style="inverted" class="text-xl">
-      <span class="inline-block">Download WNSeek Max</span>
-      <span class="block text-sm mt-1 opacity-80">For Windows, Mac & Linux</span>
+      <span class="inline-block">{t['cta.button']}</span>
+      <span class="block text-sm mt-1 opacity-80">{t['cta.forPlatforms']}</span>
     </Link>
     <Link 
       href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl"
       target="_blank"
       style="muted" 
       class="text-xl">
-      <span class="inline-block">Get Chrome Extension</span>
-      <span class="block text-sm mt-1 opacity-80">Free on Chrome Web Store</span>
+      <span class="inline-block">{t['cta.getChromeExtension']}</span>
+      <span class="block text-sm mt-1 opacity-80">{t['cta.free']}</span>
     </Link>
   </div>
   
@@ -32,19 +36,19 @@ import Link from "./ui/link.astro";
       <svg class="w-4 h-4 mr-1 text-green-400" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
       </svg>
-      Free Download
+      {t['cta.freeDownload']}
     </span>
     <span class="inline-flex items-center mr-4">
       <svg class="w-4 h-4 mr-1 text-green-400" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
       </svg>
-      Privacy Focused
+      {t['cta.privacyFocused']}
     </span>
     <span class="inline-flex items-center">
       <svg class="w-4 h-4 mr-1 text-green-400" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
       </svg>
-      Regular Updates
+      {t['cta.regularUpdates']}
     </span>
   </p>
 </div>

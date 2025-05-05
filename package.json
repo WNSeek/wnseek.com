@@ -21,6 +21,7 @@
     "@iconify-json/uil": "^1.1.8",
     "@tailwindcss/typography": "^0.5.13",
     "astro": "^4.8.7",
+    "astro-i18n-aut": "^0.7.3",
     "astro-icon": "^1.1.0",
     "astro-navbar": "^2.3.2",
     "astro-seo": "^0.8.3",

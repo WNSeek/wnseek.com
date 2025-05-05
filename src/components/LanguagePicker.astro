@@ -1,0 +1,70 @@
+---
+import { languages, getLangFromUrl, useTranslatedPath, ui } from '../i18n/ui';
+
+const url = Astro.url;
+const currentLang = getLangFromUrl(url);
+const t = ui[currentLang];
+---
+
+<div class="relative inline-block text-left">
+  <button
+    type="button"
+    class="inline-flex justify-between items-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    id="language-menu-button"
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    {t['nav.language']}
+    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </button>
+
+  <div
+    class="hidden origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="language-menu-button"
+    tabindex="-1"
+    id="language-menu"
+  >
+    <div class="py-1" role="none">
+      <p class="block px-4 py-2 text-sm text-gray-500">{t['nav.currentLanguage']}</p>
+      <div class="border-t border-gray-100"></div>
+      {Object.entries(languages).map(([lang, label]) => (
+        <a
+          href={useTranslatedPath(url, lang as keyof typeof languages) + '/'}
+          class={`block px-4 py-2 text-sm ${currentLang === lang ? 'bg-gray-100 text-gray-900 font-medium' : 'text-gray-700 hover:bg-gray-50'}`}
+          role="menuitem"
+          tabindex="-1"
+        >
+          {label}
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  // 处理语言菜单的显示和隐藏
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('language-menu-button');
+    const menu = document.getElementById('language-menu');
+
+    if (button && menu) {
+      // 点击按钮显示/隐藏菜单
+      button.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        button.setAttribute('aria-expanded', menu.classList.contains('hidden') ? 'false' : 'true');
+      });
+
+      // 点击页面其他区域隐藏菜单
+      document.addEventListener('click', (event) => {
+        if (!button.contains(event.target as Node) && !menu.contains(event.target as Node)) {
+          menu.classList.add('hidden');
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  });
+</script> 

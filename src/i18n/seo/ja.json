@@ -1,0 +1,66 @@
+{
+  "global": {
+    "siteName": "WNSeek Max",
+    "siteDescription": "マルチプラットフォーム検索アグリゲーター",
+    "siteKeywords": "検索集約、マルチプラットフォーム、検索ツール、生産性、オープンURL"
+  },
+  "pages": {
+    "home": {
+      "title": "WNSeek Max: マルチプラットフォーム検索アグリゲーター",
+      "description": "複数のプラットフォームで同時に検索できる究極の検索ツール。革新的なオープンURL技術により、Google、Bing、DuckDuckGo、ソーシャルプラットフォーム、AIツールからの包括的な結果を提供し、時間を節約して生産性を向上させます。",
+      "keywords": "検索集約、マルチプラットフォーム、検索ツール、生産性、AIツール",
+      "ogImage": "/images/og-home-ja.jpg"
+    },
+    "features": {
+      "title": "WNSeek Maxの機能 | マルチプラットフォーム検索ツール",
+      "description": "WNSeek Maxの強力な機能をご覧ください - マルチプラットフォーム検索、カスタマイズ可能な検索体験、ワンクリックのプラットフォーム切り替え、AI検索エンジン統合など。",
+      "keywords": "マルチプラットフォーム検索、カスタマイズ可能な検索、AI統合、プライバシー保護",
+      "ogImage": "/images/og-features-ja.jpg"
+    },
+    "useCases": {
+      "title": "WNSeek Maxの使用例 | あらゆる検索シナリオに最適",
+      "description": "学術研究、開発者ソリューション、市場調査、ショッピング比較、ニュース収集などの様々な使用例でWNSeek Maxを活用する方法を学びましょう。",
+      "keywords": "学術研究、開発者ツール、市場調査、ショッピング比較、ニュース収集",
+      "ogImage": "/images/og-usecases-ja.jpg"
+    },
+    "whyChoose": {
+      "title": "なぜWNSeek Maxを選ぶのか | 効率的な検索ソリューション",
+      "description": "WNSeek Maxが最高の検索ツールである理由を発見してください - 時間の節約、効率の向上、完全なカバレッジ、プライバシー保護、継続的な更新。",
+      "keywords": "時間の節約、検索効率、検索カバレッジ、プライバシー保護、検索更新",
+      "ogImage": "/images/og-whychoose-ja.jpg"
+    },
+    "faq": {
+      "title": "WNSeek Maxによくある質問 | 検索ツールFAQ",
+      "description": "WNSeek Maxに関するよくある質問の回答を見つけてください。機能、互換性、プライバシー、使用方法に関する質問にお答えします。",
+      "keywords": "WNSeek FAQ、検索ツールの質問、マルチプラットフォーム検索ヘルプ、検索ツールガイド",
+      "ogImage": "/images/og-faq-ja.jpg"
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "WNSeek",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/wnseek",
+        "https://twitter.com/wnseek",
+        "https://www.linkedin.com/company/wnseek"
+      ]
+    },
+    "product": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WNSeek Max",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows, Mac, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "マルチプラットフォーム検索アグリゲーター"
+    }
+  }
+} 

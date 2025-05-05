@@ -1,7 +1,34 @@
+# WNSeek Max - Multi-Platform Search Aggregator
+# https://wnseek.com
+
 User-agent: *
 Allow: /
 
-# WNSeek Max - Multi-Platform Search Extension
-# https://wnseek.com
+# Disallow access to specific non-public areas
+Disallow: /api/
+Disallow: /admin/
+Disallow: /tmp/
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*.xml$
+Allow: /sitemap.xml
 
+# Specific crawl rate settings for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 2
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 3
+
+# Sitemap location
 Sitemap: https://wnseek.com/sitemap.xml

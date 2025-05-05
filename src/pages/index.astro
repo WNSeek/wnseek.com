@@ -10,12 +10,16 @@ import UseCases from "@components/usecases.astro";
 import AIIntegration from "@components/aiintegration.astro";
 import WhyChoose from "@components/whychoose.astro";
 import FAQ from "@components/faq.astro";
+
+// 注意：这个页面保留在根路径以兼容原有链接，但内容与英文版相同
 ---
 
-<Layout title="">
+<Layout pageName="home">
   <Container>
     <Hero />
-    <Features />
+    <div id="features">
+      <Features />
+    </div>
     <Logos />
   </Container>
   

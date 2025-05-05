@@ -1,0 +1,66 @@
+{
+  "global": {
+    "siteName": "WNSeek Max",
+    "siteDescription": "멀티 플랫폼 검색 통합기",
+    "siteKeywords": "검색 통합, 멀티 플랫폼, 검색 도구, 생산성, 오픈 URL"
+  },
+  "pages": {
+    "home": {
+      "title": "WNSeek Max: 멀티 플랫폼 검색 통합기",
+      "description": "여러 플랫폼을 동시에 검색할 수 있는 최상의 검색 도구입니다. 혁신적인 오픈 URL 기술로 Google, Bing, DuckDuckGo, 소셜 플랫폼 및 AI 도구에서 포괄적인 결과를 제공하여 시간을 절약하고 생산성을 향상시킵니다.",
+      "keywords": "검색 통합, 멀티 플랫폼, 검색 도구, 생산성, AI 도구",
+      "ogImage": "/images/og-home-ko.jpg"
+    },
+    "features": {
+      "title": "WNSeek Max의 기능 | 멀티 플랫폼 검색 도구",
+      "description": "WNSeek Max의 강력한 기능들을 살펴보세요 - 멀티 플랫폼 검색, 맞춤형 검색 경험, 원클릭 플랫폼 전환, AI 검색 엔진 통합 등 다양한 기능을 제공합니다.",
+      "keywords": "멀티 플랫폼 검색, 맞춤형 검색, AI 통합, 개인 정보 보호",
+      "ogImage": "/images/og-features-ko.jpg"
+    },
+    "useCases": {
+      "title": "WNSeek Max 사용 사례 | 모든 검색 시나리오에 완벽",
+      "description": "학술 연구, 개발자 솔루션, 시장 조사, 쇼핑 비교, 뉴스 수집 등 다양한 사용 사례에서 WNSeek Max의 활용 방법을 알아보세요.",
+      "keywords": "학술 연구, 개발자 도구, 시장 조사, 쇼핑 비교, 뉴스 수집",
+      "ogImage": "/images/og-usecases-ko.jpg"
+    },
+    "whyChoose": {
+      "title": "WNSeek Max를 선택하는 이유 | 효율적인 검색 솔루션",
+      "description": "시간 절약, 효율성 향상, 완전한 커버리지, 개인 정보 보호, 지속적인 업데이트 등 WNSeek Max가 최고의 검색 도구인 이유를 알아보세요.",
+      "keywords": "시간 절약, 검색 효율성, 검색 커버리지, 개인 정보 보호, 검색 업데이트",
+      "ogImage": "/images/og-whychoose-ko.jpg"
+    },
+    "faq": {
+      "title": "WNSeek Max 자주 묻는 질문 | 검색 도구 FAQ",
+      "description": "WNSeek Max에 대한 자주 묻는 질문과 답변을 찾아보세요. 기능, 호환성, 개인 정보 보호 및 사용 방법에 대한 질문에 답변해 드립니다.",
+      "keywords": "WNSeek FAQ, 검색 도구 질문, 멀티 플랫폼 검색 도움말, 검색 도구 가이드",
+      "ogImage": "/images/og-faq-ko.jpg"
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "WNSeek",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/wnseek",
+        "https://twitter.com/wnseek",
+        "https://www.linkedin.com/company/wnseek"
+      ]
+    },
+    "product": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WNSeek Max",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows, Mac, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "멀티 플랫폼 검색 통합기"
+    }
+  }
+} 

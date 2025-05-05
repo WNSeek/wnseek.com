@@ -3,6 +3,10 @@ import { Picture } from "astro:assets";
 import heroImage from "assets/hero.png";
 import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 ---
 
 <main
@@ -20,10 +24,9 @@ import { Icon } from "astro-icon/components";
   <div>
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      <span class="text-black">WNSeek Max:</span> Open URL Search Across All Platforms
+      <span class="text-black" set:html={t['hero.title']}></span>
     </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      WNSeek Max is the ultimate Chrome extension for searching <strong>multiple platforms simultaneously</strong>. Our innovative <strong>open URL</strong> and <strong>open all URL</strong> technology allows you to search Google, Baidu, Bing, and other search engines with a single click, saving time and boosting productivity.
+    <p class="text-lg mt-4 text-slate-600 max-w-xl" set:html={t['hero.description']}>
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
@@ -32,7 +35,7 @@ import { Icon } from "astro-icon/components";
         class="flex gap-1 items-center justify-center"
         rel="noopener">
         <Icon class="text-white w-5 h-5" name="mdi:cloud-download-outline" />
-         Download WNSeek Max
+         {t['hero.download']}
       </Link>
       <Link
         size="lg"
@@ -42,13 +45,13 @@ import { Icon } from "astro-icon/components";
         class="flex gap-1 items-center justify-center"
         target="_blank">
         <Icon class="text-black w-4 h-4" name="mdi:google-chrome" />
-         Get on Chrome
+         {t['hero.getOnChrome']}
       </Link>
     </div>
     <p class="text-sm mt-4 text-slate-500">
-      <span class="bg-slate-100 px-2 py-1 rounded">100% Free</span> • 
-      <span class="bg-slate-100 px-2 py-1 rounded">Privacy Focused</span> • 
-      <span class="bg-slate-100 px-2 py-1 rounded">AI Integration</span>
+      <span class="bg-slate-100 px-2 py-1 rounded">{t['hero.free']}</span> • 
+      <span class="bg-slate-100 px-2 py-1 rounded">{t['hero.privacy']}</span> • 
+      <span class="bg-slate-100 px-2 py-1 rounded">{t['hero.ai']}</span>
     </p>
   </div>
 </main>

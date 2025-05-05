@@ -1,10 +1,50 @@
-<footer class="my-20">
-  <p class="text-center text-sm text-slate-500">
-    Copyright © {new Date().getFullYear()} WNSeek.com All rights reserved.
-  </p>
-  <div class="flex justify-center gap-4 mt-2 text-sm text-slate-500">
-    <a href="/privacy" class="hover:underline">Privacy Policy</a>
-    <span>|</span>
-    <a href="/terms" class="hover:underline">Terms of Service</a>
+---
+import { getLangFromUrl, ui, languages, useTranslatedPath } from '../i18n/ui';
+
+const url = Astro.url;
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
+---
+
+<footer class="mt-20 pb-10 border-t border-gray-100 pt-10">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="col-span-1 md:col-span-2">
+        <div class="text-lg font-semibold mb-3">
+          <span class="font-bold text-slate-800">WNSeek</span><span class="text-slate-500">Max</span>
+        </div>
+        <p class="text-sm text-slate-500 max-w-md">
+          Copyright © {new Date().getFullYear()} WNSeek.com {t['footer.rights']}
+        </p>
+        <div class="flex flex-wrap gap-4 mt-4 text-sm text-slate-500">
+          <a href={`/privacy/`} class="hover:underline">{t['footer.privacy']}</a>
+          <a href={`/terms/`} class="hover:underline">{t['footer.terms']}</a>
+        </div>
+      </div>
+
+      <div class="col-span-1">
+        <h3 class="font-medium text-gray-800 mb-3">{t['nav.features']}</h3>
+        <ul class="space-y-2 text-sm">
+          <li><a href={`/${lang === 'en' ? '' : lang}/#features`} class="text-gray-600 hover:text-gray-900">Multi-platform Search</a></li>
+          <li><a href={`/${lang === 'en' ? '' : lang}/#ai`} class="text-gray-600 hover:text-gray-900">AI Integration</a></li>
+          <li><a href={`/${lang === 'en' ? '' : lang}/#usecases`} class="text-gray-600 hover:text-gray-900">{t['nav.useCases']}</a></li>
+        </ul>
+      </div>
+
+      <div class="col-span-1">
+        <h3 class="font-medium text-gray-800 mb-3">{t['footer.language']}</h3>
+        <p class="text-sm text-gray-600 mb-3">{t['footer.languageSelect']}</p>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+          {Object.entries(languages).map(([langCode, label]) => (
+            <a 
+              href={useTranslatedPath(url, langCode as keyof typeof languages) + '/'}
+              class={`px-2 py-1 rounded transition-colors ${lang === langCode ? 'bg-gray-100 text-gray-800 font-medium' : 'text-gray-500 hover:text-gray-800'}`}
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
   </div>
 </footer>

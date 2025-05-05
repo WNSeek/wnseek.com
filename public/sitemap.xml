@@ -1,30 +1,233 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
 
+  <!-- Homepage -->
   <url>
-    <loc>https://wnseek.com</loc>
-    <lastmod>2023-06-01T00:00:00Z</lastmod>
+    <loc>https://wnseek.com/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
   </url>
-  
 
+  <!-- English -->
   <url>
-    <loc>https://wnseek.com/about</loc>
-    <lastmod>2023-05-20T00:00:00Z</lastmod>
+    <loc>https://wnseek.com/en/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Chinese (Simplified) -->
+  <url>
+    <loc>https://wnseek.com/zh/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Chinese (Traditional) -->
+  <url>
+    <loc>https://wnseek.com/zh_tw/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Spanish -->
+  <url>
+    <loc>https://wnseek.com/es/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Japanese -->
+  <url>
+    <loc>https://wnseek.com/ja/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Korean -->
+  <url>
+    <loc>https://wnseek.com/ko/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- French -->
+  <url>
+    <loc>https://wnseek.com/fr/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Arabic -->
+  <url>
+    <loc>https://wnseek.com/ar/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Russian -->
+  <url>
+    <loc>https://wnseek.com/ru/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Portuguese -->
+  <url>
+    <loc>https://wnseek.com/pt/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wnseek.com/en/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://wnseek.com/zh/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://wnseek.com/zh_tw/" />
+    <xhtml:link rel="alternate" hreflang="es" href="https://wnseek.com/es/" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://wnseek.com/ja/" />
+    <xhtml:link rel="alternate" hreflang="ko" href="https://wnseek.com/ko/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://wnseek.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://wnseek.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wnseek.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="pt" href="https://wnseek.com/pt/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wnseek.com/" />
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://wnseek.com/privacy/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://wnseek.com/privacy</loc>
-    <lastmod>2023-05-10T00:00:00Z</lastmod>
-    <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
+
+  <!-- Terms of Service -->
   <url>
-    <loc>https://wnseek.com/terms</loc>
-    <lastmod>2023-05-10T00:00:00Z</lastmod>
-    <changefreq>yearly</changefreq>
+    <loc>https://wnseek.com/terms/</loc>
+    <lastmod>2025-06-23T00:00:00Z</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+
 </urlset>

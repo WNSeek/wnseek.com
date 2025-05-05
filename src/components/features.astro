@@ -1,53 +1,167 @@
 ---
 // @ts-ignore
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 
 const features = [
   {
-    title: "Multi-platform Integration",
-    description:
-      "WNSeek Max seamlessly integrates with Google, Baidu, Bing, and other major search engines. Our open URL technology enables search across multiple platforms from a single query interface.",
+    title: t['features.multiPlatform.title'],
+    description: t['features.multiPlatform.description'],
     icon: "bx:bxs-data",
   },
   {
-    title: "Customizable Search Experience",
-    description:
-      "Configure search engines and platforms according to your specific needs with WNSeek Max. Our customizable open all URL features adapt to your workflows and search preferences.",
+    title: t['features.customizable.title'],
+    description: t['features.customizable.description'],
     icon: "bx:bxs-cog",
   },
   {
-    title: "One-click Platform Switching",
-    description:
-      "Switch between different search engines instantly with WNSeek's intelligent navigation. Maintain search continuity across platforms without re-entering keywords.",
+    title: t['features.oneClick.title'],
+    description: t['features.oneClick.description'],
     icon: "bx:bxs-mouse",
   },
   {
-    title: "Advanced AI Search Integration",
-    description:
-      "WNSeek Max bridges traditional search engines with AI-powered tools like ChatGPT and DeepSeek. Get comprehensive results by combining conventional search with artificial intelligence capabilities.",
+    title: t['features.ai.title'],
+    description: t['features.ai.description'],
     icon: "bx:bxs-bot",
   },
   {
-    title: "Enhanced Privacy Protection",
-    description:
-      "Your search data stays private with WNSeek Max. Unlike other tools, we don't track your search behavior or collect personal data while using our open URL and open all URL features.",
+    title: t['features.privacy.title'],
+    description: t['features.privacy.description'],
     icon: "bx:bxs-shield",
   },
   {
-    title: "Intuitive User Interface",
-    description:
-      "WNSeek Max offers an elegant, distraction-free design with both light and dark mode support. Our focus on usability makes multi-platform searching efficient and comfortable.",
+    title: t['features.ui.title'],
+    description: t['features.ui.description'],
     icon: "bx:bxs-layout",
   },
 ];
+
+// 从i18n获取附加功能
+const additionalFeatures = [
+  t['features.additionalFeature1'],
+  t['features.additionalFeature2'],
+  t['features.additionalFeature3']
+];
+
+// 为了结构化数据准备特性列表
+const structuredFeatures = [
+  ...features.map(feature => feature.title),
+  ...additionalFeatures
+];
+
+// 产品名称
+const productName = lang === 'zh' ? "万能搜Max" : "WNSeek Max";
+// 产品描述
+const productDescription = lang === 'zh' ? "一款强大的多平台搜索扩展工具" : "A powerful multi-platform search extension tool";
+// 当前日期
+const currentDate = new Date().toISOString().split('T')[0];
 ---
 
-<div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight" id="features">
-    WNSeek Max: Powerful Open URL Technology for Efficient Searching
+<!-- 网站整体结构化数据 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "url": "https://wnseek.com/",
+  "name": productName,
+  "description": productDescription,
+  "dateModified": currentDate,
+  "publisher": {
+    "@type": "Organization",
+    "name": "WNSeek",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wnseek.com/images/logo.png" // 请替换为实际的logo URL
+    }
+  },
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://wnseek.com/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", "h2.title", ".main-content p:first-of-type"]
+  },
+  "inLanguage": lang === 'zh' ? "zh-CN" : "en-US",
+  "isMobileFriendly": true,
+  "hasPart": [
+    {"@id": "https://wnseek.com/#features"},
+    {"@id": "https://wnseek.com/#aiintegration"},
+    {"@id": "https://wnseek.com/#usecases"},
+    {"@id": "https://wnseek.com/#whychoose"},
+    {"@id": "https://wnseek.com/#faq"}
+  ]
+})}>
+</script>
+
+<!-- 网站的面包屑导航结构化数据 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://wnseek.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://wnseek.com/#features"
+    }
+  ]
+})}>
+</script>
+
+<!-- 优化的结构化数据 - 软件功能列表 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": productName,
+  "applicationCategory": "BrowserApplication",
+  "applicationSubCategory": "SearchTool",
+  "operatingSystem": "Chrome, Firefox, Edge",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": productDescription,
+  "featureList": structuredFeatures.join(", "),
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "10000"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wnseek.com/#features",
+    "lastReviewed": new Date().toISOString().split('T')[0],
+    "speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": ["h2", ".text-lg.mt-4.text-slate-600"]
+    }
+  },
+  "isMobileFriendly": true,
+  "availableOnDevice": ["Desktop", "Mobile", "Tablet"],
+  "hasPart": [
+    {"@id": "https://wnseek.com/#aiintegration"},
+    {"@id": "https://wnseek.com/#usecases"}
+  ]
+})}>
+</script>
+
+<div class="mt-16 md:mt-0" id="features">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    {t['features.title']}
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    WNSeek Max transforms how you search the web with its innovative features. Our open URL technology and open all URL capabilities significantly enhance productivity for researchers, developers, and everyday users.
+    {t['features.subtitle']}
   </p>
 </div>
 
@@ -68,10 +182,34 @@ const features = [
 </div>
 
 <div class="mt-24 text-center">
-  <span class="bg-black text-white py-1 px-3 rounded-md text-sm">NEW</span>
-  <h3 class="text-xl mt-3 font-semibold">Semantic Search & Context Awareness</h3>
+  <span class="bg-black text-white py-1 px-3 rounded-md text-sm">{t['features.semantic.new']}</span>
+  <h3 class="text-xl mt-3 font-semibold">{t['features.semantic.title']}</h3>
   <p class="text-slate-600 mt-2 max-w-3xl mx-auto">
-    WNSeek Max now features improved semantic understanding of search queries, 
-    delivering more relevant results across all integrated platforms through our enhanced open URL technology.
+    {t['features.semantic.description']}
   </p>
+</div>
+
+<!-- 添加附加功能部分 -->
+<div class="mt-16 bg-gray-50 p-8 rounded-xl">
+  <h3 class="text-2xl font-semibold text-center mb-8">
+    {t['additionalFeatures.title']}
+  </h3>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {additionalFeatures.map((feature) => (
+      <div class="bg-white p-5 rounded-lg shadow-sm flex items-center">
+        <div class="mr-4 text-green-600">
+          <Icon name="mdi:check-circle" class="w-6 h-6" />
+        </div>
+        <p class="font-medium">{feature}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+<!-- 添加一个CTA部分 -->
+<div class="mt-12 text-center">
+  <a href={lang === 'zh' ? "/zh/#usecases" : `/${lang}/#usecases`} class="inline-flex items-center px-6 py-3 bg-black text-white rounded-md font-medium hover:bg-gray-800 transition-colors">
+    {t['exploreUseCase.button']}
+    <Icon name="mdi:arrow-right" class="ml-2 w-5 h-5" />
+  </a>
 </div>

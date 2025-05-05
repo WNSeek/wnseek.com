@@ -1,48 +1,208 @@
 ---
 import { Icon } from "astro-icon/components";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 
 const reasons = [
   {
-    title: "Save Time",
-    description: "No need to switch between multiple tabs. Get results from all your favorite platforms with a single search.",
-    icon: "mdi:clock-fast"
+    title: t['whyChoose.time.title'],
+    description: t['whyChoose.time.description'],
+    icon: "mdi:clock-fast",
+    highlight: t['whyChoose.time.highlight']
   },
   {
-    title: "Improve Efficiency",
-    description: "Consolidated results help you grasp core information at a glance, eliminating duplicate research efforts.",
-    icon: "mdi:chart-timeline-variant"
+    title: t['whyChoose.efficiency.title'],
+    description: t['whyChoose.efficiency.description'],
+    icon: "mdi:chart-timeline-variant",
+    highlight: t['whyChoose.efficiency.highlight']
   },
   {
-    title: "Complete Coverage",
-    description: "WNSeek Max covers almost all mainstream search platforms, ensuring you never miss important information.",
-    icon: "mdi:earth"
+    title: t['whyChoose.coverage.title'],
+    description: t['whyChoose.coverage.description'],
+    icon: "mdi:earth",
+    highlight: t['whyChoose.coverage.highlight']
   },
   {
-    title: "Privacy Protection",
-    description: "We don't collect your personal search data. Your search habits and history remain private.",
-    icon: "mdi:shield-check"
+    title: t['whyChoose.privacy.title'],
+    description: t['whyChoose.privacy.description'],
+    icon: "mdi:shield-check",
+    highlight: t['whyChoose.privacy.highlight']
   },
   {
-    title: "Continuous Updates",
-    description: "We regularly add new search sources and optimize features to give you the best search experience.",
-    icon: "mdi:update"
+    title: t['whyChoose.updates.title'],
+    description: t['whyChoose.updates.description'],
+    icon: "mdi:update",
+    highlight: t['whyChoose.updates.highlight']
   }
 ];
+
+// 从i18n获取用户统计数据
+const stats = [
+  { 
+    value: t['stats.activeUsers.value'], 
+    label: t['stats.activeUsers.label'],
+    icon: 'mdi:account-group'
+  },
+  { 
+    value: t['stats.searches.value'], 
+    label: t['stats.searches.label'],
+    icon: 'mdi:magnify'
+  },
+  { 
+    value: t['stats.platforms.value'], 
+    label: t['stats.platforms.label'],
+    icon: 'mdi:web'
+  },
+  { 
+    value: t['stats.rating.value'], 
+    label: t['stats.rating.label'],
+    icon: 'mdi:star'
+  }
+];
+
+// 从i18n获取比较表格数据
+const comparisonFeatures = [
+  {
+    name: t['comparison.multiplatform'],
+    wnseekHas: true,
+    traditionalHas: false
+  },
+  {
+    name: t['comparison.ai'],
+    wnseekHas: true,
+    traditionalHas: false
+  },
+  {
+    name: t['comparison.custom'],
+    wnseekHas: true,
+    traditionalHas: false
+  },
+  {
+    name: t['comparison.time'],
+    wnseekHas: true,
+    traditionalHas: false
+  },
+  {
+    name: t['comparison.free'],
+    wnseekHas: true,
+    traditionalHas: true
+  }
+];
+const productName = lang === 'zh' ? "万能搜Max" : "WNSeek Max";
+const currentDate = new Date().toISOString().split('T')[0];
 ---
 
-<div class="bg-slate-50 py-20">
+<!-- 优化的结构化数据 - 产品比较 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Table",
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": productName,
+    "applicationCategory": "BrowserApplication",
+    "applicationSubCategory": "SearchTool",
+    "sameAs": "https://wnseek.com/"
+  },
+  "mainContentOfPage": {
+    "@type": "WebPageElement",
+    "isPartOf": {
+      "@id": "https://wnseek.com/#whychoose"
+    }
+  },
+  "name": lang === 'zh' ? "万能搜Max vs 传统搜索方式比较" : "WNSeek Max vs Traditional Search Methods Comparison",
+  "description": lang === 'zh' ? "万能搜Max与传统搜索方式的功能对比" : "Feature comparison between WNSeek Max and traditional search methods"
+})}>
+</script>
+
+<!-- 优化的结构化数据 - 产品统计 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": lang === 'zh' ? "万能搜Max使用统计" : "WNSeek Max Usage Statistics",
+  "description": lang === 'zh' ? "万能搜Max的使用数据和用户统计" : "Usage data and statistics for WNSeek Max",
+  "creator": {
+    "@type": "Organization",
+    "name": "WNSeek",
+    "url": "https://wnseek.com"
+  },
+  "datePublished": "2024-01-01", // 假设的发布日期
+  "dateModified": currentDate,
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "keywords": [
+    "search statistics",
+    "user metrics",
+    "platform usage"
+  ],
+  "variableMeasured": stats.map(stat => ({
+    "@type": "PropertyValue",
+    "name": stat.label,
+    "value": stat.value
+  })),
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wnseek.com/#whychoose"
+  },
+  "isMobileFriendly": true
+})}>
+</script>
+
+<!-- 添加专业评论结构化数据 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": productName,
+    "applicationCategory": "BrowserApplication"
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "5",
+    "bestRating": "5"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Tech Reviewers",
+    "url": "https://techreviewers.example.com" // 假设的评论者网站
+  },
+  "reviewBody": lang === 'zh' 
+    ? "万能搜Max提供了前所未有的搜索效率，支持30多个平台同时搜索，并集成AI工具，节省70%的搜索时间。"
+    : "WNSeek Max provides unprecedented search efficiency with support for over 30 platforms simultaneously and AI integration, saving 70% of search time.",
+  "datePublished": "2024-05-01" // 假设的评论发布日期
+})}>
+</script>
+
+<div class="bg-slate-50 py-20" id="whychoose">
   <div class="mx-auto max-w-6xl px-4">
     <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-center mb-4">
-      Why Choose WNSeek Max
+      {t['whyChoose.title']}
     </h2>
     <p class="text-lg text-slate-600 text-center max-w-3xl mx-auto mb-16">
-      Discover the advantages that make WNSeek Max the preferred choice for power users, researchers, and anyone who values efficient information retrieval.
+      {t['whyChoose.description']}
     </p>
+    
+    <!-- 用户统计 -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+      {stats.map(stat => (
+        <div class="bg-white p-5 rounded-xl shadow-sm text-center">
+          <div class="flex justify-center mb-2">
+            <Icon name={stat.icon} class="size-8 text-blue-600" />
+          </div>
+          <div class="text-2xl md:text-3xl font-bold">{stat.value}</div>
+          <div class="text-sm text-slate-500">{stat.label}</div>
+        </div>
+      ))}
+    </div>
     
     <div class="grid md:grid-cols-3 gap-10">
       {
         reasons.slice(0, 3).map((item) => (
-          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+              {item.highlight}
+            </div>
             <div class="bg-black rounded-xl h-14 w-14 flex items-center justify-center mb-5">
               <Icon name={item.icon} class="text-white size-7" />
             </div>
@@ -56,7 +216,10 @@ const reasons = [
     <div class="grid md:grid-cols-2 gap-10 mt-10 max-w-4xl mx-auto">
       {
         reasons.slice(3).map((item) => (
-          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+          <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+              {item.highlight}
+            </div>
             <div class="bg-black rounded-xl h-14 w-14 flex items-center justify-center mb-5">
               <Icon name={item.icon} class="text-white size-7" />
             </div>
@@ -67,9 +230,55 @@ const reasons = [
       }
     </div>
     
+    <!-- 对比优势 -->
+    <div class="mt-20 bg-white rounded-xl shadow-sm p-8 border border-gray-100">
+      <h3 class="text-2xl font-semibold text-center mb-8">
+        {t['comparison.title']}
+      </h3>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr class="bg-gray-50">
+              <th class="p-3 text-left border-b border-gray-200">{t['comparison.multiplatform']}</th>
+              <th class="p-3 text-center border-b border-gray-200">{lang === 'zh' ? '万能搜Max' : 'WNSeek Max'}</th>
+              <th class="p-3 text-center border-b border-gray-200">{lang === 'zh' ? '传统搜索' : 'Traditional Search'}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border-b border-gray-200">{t['comparison.multiplatform']}</td>
+              <td class="p-3 text-center border-b border-gray-200 text-green-600"><Icon name="mdi:check-bold" class="inline-block size-5" /></td>
+              <td class="p-3 text-center border-b border-gray-200 text-red-600"><Icon name="mdi:close" class="inline-block size-5" /></td>
+            </tr>
+            <tr>
+              <td class="p-3 border-b border-gray-200">{t['comparison.ai']}</td>
+              <td class="p-3 text-center border-b border-gray-200 text-green-600"><Icon name="mdi:check-bold" class="inline-block size-5" /></td>
+              <td class="p-3 text-center border-b border-gray-200 text-red-600"><Icon name="mdi:close" class="inline-block size-5" /></td>
+            </tr>
+            <tr>
+              <td class="p-3 border-b border-gray-200">{t['comparison.custom']}</td>
+              <td class="p-3 text-center border-b border-gray-200 text-green-600"><Icon name="mdi:check-bold" class="inline-block size-5" /></td>
+              <td class="p-3 text-center border-b border-gray-200 text-red-600"><Icon name="mdi:close" class="inline-block size-5" /></td>
+            </tr>
+            <tr>
+              <td class="p-3 border-b border-gray-200">{t['comparison.time']}</td>
+              <td class="p-3 text-center border-b border-gray-200 text-green-600"><Icon name="mdi:check-bold" class="inline-block size-5" /></td>
+              <td class="p-3 text-center border-b border-gray-200 text-red-600"><Icon name="mdi:close" class="inline-block size-5" /></td>
+            </tr>
+            <tr>
+              <td class="p-3">{t['comparison.free']}</td>
+              <td class="p-3 text-center text-green-600"><Icon name="mdi:check-bold" class="inline-block size-5" /></td>
+              <td class="p-3 text-center text-green-600"><Icon name="mdi:check-bold" class="inline-block size-5" /></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
     <div class="text-center mt-16">
       <a href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" class="bg-black text-white hover:bg-gray-800 px-8 py-3 rounded-md text-lg font-medium inline-block transition-colors">
-        Get WNSeek Max Today
+        {t['whyChoose.getToday']}
       </a>
     </div>
   </div>

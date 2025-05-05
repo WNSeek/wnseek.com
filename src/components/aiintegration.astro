@@ -2,15 +2,152 @@
 import { Icon } from "astro-icon/components";
 import { Picture } from "astro:assets";
 import aiSearchImage from "assets/ai-search.png";
+import { getLangFromUrl, ui } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
+
+// AI搜索引擎列表
+const aiEngines = lang === 'zh' ? [
+  { name: "ChatGPT", icon: "mdi:robot-excited" },
+  { name: "DeepSeek", icon: "mdi:brain" },
+  { name: "豆包", icon: "mdi:message-processing" },
+  { name: "文心一言", icon: "mdi:chat-processing" }
+] : [
+  { name: "ChatGPT", icon: "mdi:robot-excited" },
+  { name: "DeepSeek", icon: "mdi:brain" },
+  { name: "Google Bard", icon: "mdi:google" },
+  { name: "Claude", icon: "mdi:message-processing" }
+];
+
+// AI搜索样例问题
+const exampleQueries = lang === 'zh' ? [
+  "谁发明了相对论以及它的主要观点是什么？",
+  "比较React和Vue的主要区别和应用场景",
+  "提供一个简单的Python爬虫示例代码",
+  "整理关于全球气候变化的多角度观点"
+] : [
+  "Who invented the theory of relativity and what are its main points?",
+  "Compare the main differences and use cases between React and Vue",
+  "Provide a simple Python web scraping example code",
+  "Summarize different perspectives on global climate change"
+];
+
+// 为结构化数据准备AI功能描述
+const aiFeatures = [
+  t['ai.feature1'],
+  t['ai.feature2'],
+  t['ai.feature3'],
+  t['ai.feature4']
+];
+const productName = lang === 'zh' ? "万能搜Max" : "WNSeek Max";
+const aiDescription = t['ai.description'];
+const currentDate = new Date().toISOString().split('T')[0];
 ---
 
-<div class="grid md:grid-cols-2 gap-10 mx-auto py-20">
+<!-- 优化的结构化数据 - AI集成技术 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://wnseek.com/#aiintegration"
+  },
+  "headline": t['ai.title'],
+  "description": aiDescription,
+  "datePublished": "2024-01-01", // 假设的发布日期
+  "dateModified": currentDate,
+  "author": {
+    "@type": "Organization",
+    "name": "WNSeek",
+    "url": "https://wnseek.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "WNSeek",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://wnseek.com/images/logo.png" // 请替换为实际的logo URL
+    }
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": productName,
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Chrome, Firefox, Edge",
+    "softwareVersion": "2.0" // 假设的版本号
+  },
+  "articleBody": aiFeatures.join(". "),
+  "keywords": aiEngines.map(engine => engine.name).join(", "),
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h2", "p.text-lg"]
+  },
+  "isAccessibleForFree": true,
+  "educationalUse": "Research",
+  "isMobileFriendly": true
+})}>
+</script>
+
+<!-- 添加HowTo结构化数据 - 如何使用AI搜索 -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": lang === 'zh' ? "如何使用万能搜Max的AI搜索功能" : "How to use WNSeek Max AI search feature",
+  "description": aiDescription,
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": lang === 'zh' ? "安装万能搜Max扩展" : "Install WNSeek Max extension",
+      "text": lang === 'zh' ? "从Chrome网上应用店安装万能搜Max浏览器扩展" : "Install WNSeek Max browser extension from Chrome Web Store",
+      "url": "https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://wnseek.com/images/install-step.png" // 请替换为实际的图片URL
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "name": lang === 'zh' ? "输入您的搜索查询" : "Enter your search query",
+      "text": lang === 'zh' ? "在搜索框中输入您要搜索的内容" : "Type your search query in the search box",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://wnseek.com/images/search-step.png" // 请替换为实际的图片URL
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "name": lang === 'zh' ? "选择AI搜索引擎" : "Choose AI search engine",
+      "text": lang === 'zh' ? "从可用的AI引擎中选择一个或多个进行搜索" : "Select one or more AI engines from available options",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://wnseek.com/images/ai-select-step.png" // 请替换为实际的图片URL
+      }
+    },
+    {
+      "@type": "HowToStep",
+      "name": lang === 'zh' ? "获取AI增强的搜索结果" : "Get AI-enhanced search results",
+      "text": lang === 'zh' ? "查看AI整合的搜索结果和洞见" : "View AI-integrated search results and insights",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://wnseek.com/images/results-step.png" // 请替换为实际的图片URL
+      }
+    }
+  ],
+  "tool": aiEngines.map(engine => ({
+    "@type": "HowToTool",
+    "name": engine.name
+  }))
+})}>
+</script>
+
+<div class="grid md:grid-cols-2 gap-10 mx-auto py-20" id="aiintegration">
   <div class="flex flex-col justify-center">
     <h2 class="text-4xl font-bold lg:tracking-tight">
-      AI Search Power at Your Fingertips
+      {t['ai.title']}
     </h2>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      WNSeek Max seamlessly integrates with leading AI search engines, combining traditional search with artificial intelligence for more comprehensive results.
+      {t['ai.description']}
     </p>
 
     <ul class="grid mt-6 gap-4">
@@ -18,31 +155,41 @@ import aiSearchImage from "assets/ai-search.png";
         <div class="bg-black rounded-full p-1 mt-1">
           <Icon name="mdi:check" class="text-white size-4" />
         </div>
-        <span>Integration with ChatGPT for enhanced natural language searching</span>
+        <span>{t['ai.feature1']}</span>
       </li>
       <li class="flex gap-2 items-start">
         <div class="bg-black rounded-full p-1 mt-1">
           <Icon name="mdi:check" class="text-white size-4" />
         </div>
-        <span>DeepSeek AI support for deeper contextual understanding</span>
+        <span>{t['ai.feature2']}</span>
       </li>
       <li class="flex gap-2 items-start">
         <div class="bg-black rounded-full p-1 mt-1">
           <Icon name="mdi:check" class="text-white size-4" />
         </div>
-        <span>Google Bard compatibility for additional AI-powered insights</span>
+        <span>{t['ai.feature3']}</span>
       </li>
       <li class="flex gap-2 items-start">
         <div class="bg-black rounded-full p-1 mt-1">
           <Icon name="mdi:check" class="text-white size-4" />
         </div>
-        <span>Switch between traditional and AI search with one click</span>
+        <span>{t['ai.feature4']}</span>
       </li>
     </ul>
 
+    <!-- AI搜索引擎展示 -->
+    <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+      {aiEngines.map(engine => (
+        <div class="bg-gray-50 p-3 rounded-lg text-center flex flex-col items-center">
+          <Icon name={engine.icon} class="text-blue-600 size-8 mb-2" />
+          <span class="text-sm font-medium">{engine.name}</span>
+        </div>
+      ))}
+    </div>
+
     <div class="flex mt-8">
       <a href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-black hover:bg-gray-800">
-        Try AI Search Now
+        {t['ai.tryNow']}
       </a>
     </div>
   </div>
@@ -50,22 +197,58 @@ import aiSearchImage from "assets/ai-search.png";
   <div class="flex items-center justify-center">
     <div class="w-full max-w-md bg-slate-100 rounded-xl p-6 shadow-lg">
       <div class="bg-white rounded-lg p-4 shadow-sm mb-4">
-        <div class="flex items-center mb-2">
+        <div class="flex items-center mb-3">
           <div class="bg-blue-600 rounded-full w-8 h-8 flex items-center justify-center mr-3">
             <Icon name="mdi:robot" class="text-white size-5" />
           </div>
-          <span class="font-medium">AI Search Assistant</span>
+          <span class="font-medium">{t['ai.assistant']}</span>
         </div>
-        <p class="text-slate-700 text-sm">I found multiple results for your query across different platforms. Would you like me to summarize the key findings?</p>
+        <p class="text-slate-700 text-sm mb-3">{t['ai.assistantMsg']}</p>
+        
+        <!-- 样例查询展示 -->
+        <div class="bg-blue-50 rounded-lg p-3 mt-3">
+          <div class="text-xs font-medium text-blue-700 mb-2">{lang === 'zh' ? '样例查询' : 'Example Queries'}</div>
+          <ul class="text-xs text-slate-700 space-y-2">
+            {exampleQueries.map(query => (
+              <li class="flex items-center">
+                <Icon name="mdi:magnify" class="text-blue-500 size-4 mr-2 flex-shrink-0" />
+                <span class="line-clamp-1">{query}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
       
-      <div class="flex gap-2 mb-4">
-        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm">Google</div>
-        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm">ChatGPT</div>
-        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm">DeepSeek</div>
+      <div class="flex flex-wrap gap-2 mb-4">
+        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm flex items-center">
+          <Icon name="mdi:google" class="size-4 mr-1" /> Google
+        </div>
+        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm flex items-center">
+          <Icon name="mdi:robot" class="size-4 mr-1" /> ChatGPT
+        </div>
+        <div class="bg-gray-200 rounded-full px-3 py-1 text-sm flex items-center">
+          <Icon name="mdi:brain" class="size-4 mr-1" /> DeepSeek
+        </div>
+        {lang === 'zh' ? (
+          <div class="bg-gray-200 rounded-full px-3 py-1 text-sm flex items-center">
+            <Icon name="mdi:message-processing" class="size-4 mr-1" /> 豆包
+          </div>
+        ) : (
+          <div class="bg-gray-200 rounded-full px-3 py-1 text-sm flex items-center">
+            <Icon name="mdi:message-processing" class="size-4 mr-1" /> Claude
+          </div>
+        )}
       </div>
       
-      <p class="text-xs text-slate-500 text-center">WNSeek Max combines traditional search with AI capabilities</p>
+      <p class="text-xs text-slate-500 text-center">{t['ai.combines']}</p>
+      
+      <!-- 添加交互提示 -->
+      <div class="mt-4 bg-white rounded-lg p-3 shadow-sm border border-blue-100">
+        <div class="flex items-center text-sm">
+          <Icon name="mdi:lightbulb" class="text-yellow-500 size-5 mr-2" />
+          <span>{lang === 'zh' ? '一键切换AI与传统搜索结果' : 'Switch between AI and traditional search with one click'}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div> 

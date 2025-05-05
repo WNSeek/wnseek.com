@@ -1,0 +1,65 @@
+{
+  "global": {
+    "siteName": "万能搜Max",
+    "siteDescription": "多平台聚合搜索工具",
+    "siteKeywords": "聚合搜索, 多平台, 搜索工具, 生产力, 开放URL"
+  },
+  "pages": {
+    "home": {
+      "title": "万能搜Max: 多平台聚合搜索工具",
+      "description": "万能搜Max是一款强大的多平台聚合搜索工具，让您一次性在多个搜索引擎、社交平台、AI工具及专业网站中快速找到所需信息，大幅提升信息获取效率。",
+      "keywords": "聚合搜索, 多平台, 搜索工具, 生产力, AI工具",
+      "ogImage": "/images/og-home-zh.jpg"
+    },
+    "features": {
+      "title": "万能搜Max功能特性 | 多平台搜索工具",
+      "description": "探索万能搜Max的强大功能 - 多平台搜索、可定制搜索体验、一键平台切换、AI搜索引擎集成等。",
+      "keywords": "多平台搜索, 可定制搜索, AI集成, 隐私保护",
+      "ogImage": "/images/og-features-zh.jpg"
+    },
+    "useCases": {
+      "title": "万能搜Max使用场景 | 适用于各种搜索需求",
+      "description": "了解如何在各种场景中使用万能搜Max，如学术研究、开发者解决方案、市场调研、购物比价和新闻收集。",
+      "keywords": "学术研究, 开发者工具, 市场调研, 购物比价, 新闻收集",
+      "ogImage": "/images/og-usecases-zh.jpg"
+    },
+    "whyChoose": {
+      "title": "为什么选择万能搜Max | 高效搜索解决方案",
+      "description": "了解为什么万能搜Max是最好的搜索工具 - 节省时间、提高效率、完整覆盖、隐私保护和持续更新。",
+      "keywords": "节省时间, 搜索效率, 搜索覆盖, 隐私保护, 搜索更新",
+      "ogImage": "/images/og-whychoose-zh.jpg"
+    },
+    "faq": {
+      "title": "万能搜Max常见问题解答 | 搜索工具FAQ",
+      "description": "查找关于万能搜Max的常见问题答案。我们回答您关于功能、兼容性、隐私和使用方法的问题。",
+      "keywords": "万能搜FAQ, 搜索工具问题, 多平台搜索帮助, 搜索工具指南",
+      "ogImage": "/images/og-faq-zh.jpg"
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "万能搜Max",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/wnseek",
+        "https://twitter.com/wnseek"
+      ]
+    },
+    "product": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "万能搜Max",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows, Mac, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "多平台聚合搜索工具"
+    }
+  }
+} 

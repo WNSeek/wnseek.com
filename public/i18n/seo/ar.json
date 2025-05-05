@@ -1,0 +1,66 @@
+{
+  "global": {
+    "siteName": "WNSeek Max",
+    "siteDescription": "محرك بحث متعدد المنصات",
+    "siteKeywords": "تجميع البحث، متعدد المنصات، أداة بحث، إنتاجية، عنوان URL مفتوح"
+  },
+  "pages": {
+    "home": {
+      "title": "WNSeek Max: محرك بحث متعدد المنصات",
+      "description": "رفيق البحث النهائي الذي يتيح لك البحث عبر منصات متعددة في وقت واحد. توفر تقنية URL المفتوح المبتكرة نتائج شاملة من Google وBing وDuckDuckGo ومنصات التواصل الاجتماعي وأدوات الذكاء الاصطناعي - مما يوفر وقتك ويعزز إنتاجيتك.",
+      "keywords": "تجميع البحث، متعدد المنصات، أداة بحث، إنتاجية، أدوات الذكاء الاصطناعي",
+      "ogImage": "/images/og-home-ar.jpg"
+    },
+    "features": {
+      "title": "مميزات WNSeek Max | أداة بحث متعددة المنصات",
+      "description": "اكتشف المميزات القوية لـ WNSeek Max - بحث متعدد المنصات، تجربة بحث قابلة للتخصيص، التبديل بين المنصات بنقرة واحدة، تكامل محركات بحث الذكاء الاصطناعي والمزيد.",
+      "keywords": "بحث متعدد المنصات، بحث مخصص، تكامل الذكاء الاصطناعي، حماية الخصوصية",
+      "ogImage": "/images/og-features-ar.jpg"
+    },
+    "useCases": {
+      "title": "حالات استخدام WNSeek Max | مثالي لكل سيناريو بحث",
+      "description": "اكتشف كيفية استخدام WNSeek Max في حالات استخدام متنوعة مثل البحث الأكاديمي، حلول المطورين، بحوث السوق، مقارنة التسوق وجمع الأخبار.",
+      "keywords": "البحث الأكاديمي، أدوات المطورين، بحوث السوق، مقارنة التسوق، جمع الأخبار",
+      "ogImage": "/images/og-usecases-ar.jpg"
+    },
+    "whyChoose": {
+      "title": "لماذا تختار WNSeek Max | حل بحث فعال",
+      "description": "اكتشف لماذا يعتبر WNSeek Max أفضل أداة بحث - توفير الوقت، تحسين الكفاءة، تغطية كاملة، حماية الخصوصية وتحديثات مستمرة.",
+      "keywords": "توفير الوقت، كفاءة البحث، تغطية البحث، حماية الخصوصية، تحديثات البحث",
+      "ogImage": "/images/og-whychoose-ar.jpg"
+    },
+    "faq": {
+      "title": "الأسئلة المتكررة حول WNSeek Max | الأسئلة الشائعة لأداة البحث",
+      "description": "ابحث عن إجابات للأسئلة المتكررة حول WNSeek Max. نجيب على أسئلتك حول الميزات والتوافق والخصوصية والاستخدام.",
+      "keywords": "أسئلة شائعة عن WNSeek، أسئلة أداة البحث، مساعدة البحث متعدد المنصات، دليل أداة البحث",
+      "ogImage": "/images/og-faq-ar.jpg"
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "WNSeek",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/wnseek",
+        "https://twitter.com/wnseek",
+        "https://www.linkedin.com/company/wnseek"
+      ]
+    },
+    "product": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WNSeek Max",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows, Mac, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "محرك بحث متعدد المنصات"
+    }
+  }
+} 

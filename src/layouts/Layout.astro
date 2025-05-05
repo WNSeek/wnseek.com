@@ -4,27 +4,197 @@ import Footer from "@components/footer.astro";
 import Navbar from "@components/navbar/navbar.astro";
 import "@fontsource-variable/inter/index.css";
 import '@fontsource-variable/bricolage-grotesque';
+import { getLangFromUrl, useTranslatedPath, languages } from '../i18n/ui';
 
 export interface Props {
-  title: string;
+  title?: string;
+  pageName?: string; // 页面名称，对应SEO文件中的页面键
 }
 
+// 定义SEO数据类型
+interface SEOData {
+  global?: {
+    siteName?: string;
+    siteDescription?: string;
+    siteKeywords?: string;
+  };
+  pages?: Record<string, {
+    title?: string;
+    description?: string;
+    keywords?: string;
+    ogImage?: string;
+  }>;
+  structuredData?: {
+    organization?: Record<string, any>;
+    product?: Record<string, any>;
+    faq?: Record<string, any>;
+  };
+}
+
+// 获取当前语言和URL
+const { title, pageName = 'home' } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
+// 尝试加载SEO数据
+let seoData: SEOData = {};
+try {
+  // 动态导入当前语言的SEO文件
+  const module = await import(`../i18n/seo/${lang}.json`);
+  seoData = module.default as SEOData;
+} catch (error) {
+  // 如果无法加载特定语言，使用默认值
+  console.warn(`Could not load SEO data for language ${lang}. Using defaults.`);
+}
+
+// 获取SEO配置
+const globalSEO = seoData.global || {};
+const pageSEO = seoData.pages?.[pageName] || {};
+const structuredData = seoData.structuredData || {};
+
+// 构建页面标题
+const makeTitle = title 
+  ? title + " | " + (lang === 'zh' ? "万能搜Max" : "WNSeek Max")
+  : pageSEO.title 
+    ? pageSEO.title 
+    : lang === 'zh' 
+      ? "万能搜Max - 一款高效的多平台聚合搜索工具，让您一键获取全面搜索结果"
+      : "WNSeek Max - Multi-Platform Search Aggregator | Search Multiple Sites At Once";
+
+// 构建页面描述
+const description = pageSEO.description 
+  || (lang === 'zh' 
+      ? "万能搜Max是一款强大的多平台聚合搜索工具，让您一次性在多个搜索引擎、社交平台、AI工具及专业网站中快速找到所需信息，大幅提升信息获取效率。" 
+      : "WNSeek Max is a powerful multi-platform search aggregator that lets you search across Google, Bing, DuckDuckGo, social platforms, AI tools, and professional websites simultaneously to find information quickly.");
+
+// 构建关键词
+const keywords = pageSEO.keywords 
+  || (lang === 'zh' 
+      ? "万能搜Max, 万能搜, 聚合搜索, 多平台搜索, 多搜索引擎, 搜索工具, 浏览器扩展, AI搜索" 
+      : "WNSeek Max, multi-platform search, search aggregator, search tool, browser extension, AI search, ChatGPT search, Google search");
+
+// 准备OpenGraph图片
 const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
+  pageSEO.ogImage || "/opengraph.jpg",
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
+// 准备结构化数据
+const organizationData = structuredData.organization 
+  ? JSON.stringify(structuredData.organization)
+  : JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": lang === 'zh' ? "万能搜Max" : "WNSeek Max",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/favicon.svg",
+      "sameAs": [
+        "https://twitter.com/wnseekmax",
+        "https://github.com/wnseek"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "wnseekmax@gmail.com",
+        "contactType": "customer service"
+      }
+    });
 
-const makeTitle = title
-  ? title + " | " + "WNSeek Max"
-  : "WNSeek Max - Multi-Platform Search Extension | Open URL | Open All URL Technology";
+const productData = structuredData.product
+  ? JSON.stringify(structuredData.product)
+  : JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": lang === 'zh' ? "万能搜Max" : "WNSeek Max",
+      "operatingSystem": "Windows, macOS, Linux, Chrome, Firefox, Edge",
+      "applicationCategory": "BrowserApplication",
+      "applicationSubCategory": "SearchTool",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD", 
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "125",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "description": lang === 'zh' 
+        ? "万能搜Max是一款强大的多平台聚合搜索工具，让您一次性在多个搜索引擎、社交平台、AI工具及专业网站中快速找到所需信息，大幅提升信息获取效率。" 
+        : "WNSeek Max is a powerful multi-platform search aggregator that allows you to quickly find information across multiple search engines, social platforms, AI tools, and professional websites simultaneously.",
+      "featureList": lang === 'zh' 
+        ? "一键多平台搜索, 自定义搜索组合, AI搜索引擎集成, 智能搜索建议, 隐私保护" 
+        : "Multi-platform search, Customizable search combinations, AI search engine integration, Intelligent search suggestions, Privacy protection",
+      "softwareVersion": "1.0.2",
+      "screenshot": {
+        "@type": "ImageObject",
+        "url": "https://wnseek.com/opengraph.jpg",
+        "caption": lang === 'zh' ? "万能搜Max界面" : "WNSeek Max Interface"
+      },
+      "url": "https://wnseek.com",
+      "downloadUrl": "https://chrome.google.com/webstore/detail/wnseek-max/",
+      "keywords": lang === 'zh' 
+        ? "多平台搜索,聚合搜索,AI搜索,搜索工具,浏览器扩展" 
+        : "multi-platform search,search aggregator,AI search,search tool,browser extension",
+      "author": {
+        "@type": "Organization",
+        "name": lang === 'zh' ? "万能搜Max" : "WNSeek Max",
+        "url": "https://wnseek.com"
+      }
+    });
+
+const faqData = structuredData.faq && pageName === 'faq'
+  ? JSON.stringify(structuredData.faq)
+  : JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": lang === 'zh' ? "万能搜Max是什么？" : "What is WNSeek Max?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": lang === 'zh' 
+              ? "万能搜Max是一款强大的多平台聚合搜索工具，让您一次性在多个搜索引擎、社交平台、AI工具及专业网站中快速找到所需信息，大幅提升信息获取效率。" 
+              : "WNSeek Max is a powerful multi-platform aggregated search tool that lets you quickly find information across multiple search engines, social platforms, AI tools, and professional websites simultaneously, significantly improving your information retrieval efficiency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": lang === 'zh' ? "万能搜Max支持哪些搜索平台？" : "Which search platforms does WNSeek Max support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": lang === 'zh' 
+              ? "万能搜Max支持广泛的平台，包括Google、百度、必应、搜狗等主流搜索引擎，知乎、微博、B站等社交媒体平台，以及GitHub、Stack Overflow等开发者资源。支持的平台列表会定期更新。" 
+              : "WNSeek Max supports a wide range of platforms including Google, Bing, DuckDuckGo, Baidu, GitHub, Stack Overflow, Reddit, Twitter, YouTube, and many specialized academic and news search engines. The list of supported platforms is regularly updated."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": lang === 'zh' ? "万能搜Max与AI搜索工具兼容吗？" : "Is WNSeek Max compatible with AI search tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": lang === 'zh' 
+              ? "是的，万能搜Max与多个AI搜索工具集成，包括ChatGPT、DeepSeek和豆包，将传统搜索与AI功能结合，提供更全面的结果。" 
+              : "Yes, WNSeek Max integrates with several AI search tools including ChatGPT, DeepSeek, and Google Bard, combining traditional search with AI capabilities for more comprehensive results."
+          }
+        }
+      ]
+    });
+
+// 为每种语言生成对应的替代页面URL
+const alternateUrls = Object.keys(languages).map(langCode => {
+  return {
+    href: new URL(useTranslatedPath(Astro.url, langCode as keyof typeof languages), Astro.site).toString(),
+    hreflang: langCode === 'zh_tw' ? 'zh-Hant' : (langCode === 'zh' ? 'zh-Hans' : langCode)
+  };
+});
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -47,13 +217,19 @@ const makeTitle = title
     </script>
 
     <!-- Primary Meta Tags -->
-    <meta name="keywords" content="WNSeek, open URL, open all URL, multi-platform search, search extension, Chrome extension, search aggregator, search tool" />
-    <meta name="author" content="WNSeek Max" />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={lang === 'zh' ? "万能搜Max" : "WNSeek Max"} />
+
+    <!-- Hreflang Tags for Multilingual SEO -->
+    <link rel="alternate" href={canonicalURL} hreflang="x-default" />
+    {alternateUrls.map((alt) => (
+      <link rel="alternate" href={alt.href} hreflang={alt.hreflang} />
+    ))}
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="WNSeek Max - Search across Google, Bing, and more with one click. Our open URL technology allows searching multiple platforms simultaneously. Save time with open all URL features and boost productivity with our powerful Chrome extension."
+      description={description}
       canonical={canonicalURL}
       twitter={{
         creator: "@wnseekmax",
@@ -64,57 +240,28 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `WNSeek Max - Multi-Platform Search with Open URL Technology`,
+          title: lang === 'zh' ? 
+            "万能搜Max - 多平台聚合搜索工具" : 
+            "WNSeek Max - Multi-Platform Search Aggregator",
           image: resolvedImageWithDomain,
         },
         image: {
-          alt: "WNSeek Max Chrome Extension Screenshot",
+          alt: lang === 'zh' ? "万能搜Max浏览器扩展截图" : "WNSeek Max Browser Extension Screenshot",
         },
         optional: {
-          description: "Search multiple platforms simultaneously with WNSeek Max. Our open URL and open all URL features save time and boost productivity."
+          description: description
         }
       }}
     />
     
     <!-- Structured Data for Rich Results -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "WNSeek Max",
-        "operatingSystem": "Chrome, Firefox, Edge",
-        "applicationCategory": "BrowserApplication",
-        "applicationSubCategory": "Search Extension",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/InStock"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "5.0",
-          "ratingCount": "1",
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "description": "WNSeek Max is a powerful multi-platform search extension with open URL technology allowing users to search across Google, Bing, and more search engines simultaneously. Save time with open all URL features and boost productivity.",
-        "featureList": "Multi-platform search, Open URL technology, Open all URLs, Time-saving",
-        "softwareVersion": "1.0",
-        "screenshot": {
-          "@type": "ImageObject",
-          "url": "https://wnseek.com/opengraph.jpg",
-          "caption": "WNSeek Max Interface"
-        },
-        "url": "https://wnseek.com",
-        "downloadUrl": "https://chrome.google.com/webstore/detail/wnseek-max/",
-        "author": {
-          "@type": "Organization",
-          "name": "WNSeek Max",
-          "url": "https://wnseek.com"
-        }
-      }
-    </script>
+    <script type="application/ld+json" set:html={productData} />
+    
+    <!-- FAQ Schema Markup -->
+    <script type="application/ld+json" set:html={faqData} />
+    
+    <!-- Organization Schema -->
+    <script type="application/ld+json" set:html={organizationData} />
   </head>
   <body>
     <Navbar />

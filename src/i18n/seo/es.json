@@ -1,0 +1,66 @@
+{
+  "global": {
+    "siteName": "WNSeek Max",
+    "siteDescription": "Agregador de Búsqueda Multiplataforma",
+    "siteKeywords": "agregación de búsquedas, multiplataforma, herramienta de búsqueda, productividad, URL abierta"
+  },
+  "pages": {
+    "home": {
+      "title": "WNSeek Max: Agregador de Búsqueda Multiplataforma",
+      "description": "El compañero de búsqueda definitivo que te permite buscar en múltiples plataformas simultáneamente. Nuestra innovadora tecnología de URL abierta proporciona resultados completos de Google, Bing, DuckDuckGo, plataformas sociales y herramientas de IA - ahorrando tu tiempo y mejorando tu productividad.",
+      "keywords": "agregación de búsquedas, multiplataforma, herramienta de búsqueda, productividad, herramientas de IA",
+      "ogImage": "/images/og-home-es.jpg"
+    },
+    "features": {
+      "title": "Características de WNSeek Max | Herramienta de Búsqueda Multiplataforma",
+      "description": "Descubre las poderosas características de WNSeek Max - búsqueda multiplataforma, experiencia de búsqueda personalizable, cambio de plataforma con un clic, integración de motores de búsqueda de IA y más.",
+      "keywords": "búsqueda multiplataforma, búsqueda personalizable, integración de IA, protección de privacidad",
+      "ogImage": "/images/og-features-es.jpg"
+    },
+    "useCases": {
+      "title": "Casos de Uso de WNSeek Max | Perfecto para Cada Escenario de Búsqueda",
+      "description": "Aprende cómo utilizar WNSeek Max en varios casos de uso como investigación académica, soluciones para desarrolladores, investigación de mercado, comparación de compras y recopilación de noticias.",
+      "keywords": "investigación académica, herramientas para desarrolladores, investigación de mercado, comparación de compras, recopilación de noticias",
+      "ogImage": "/images/og-usecases-es.jpg"
+    },
+    "whyChoose": {
+      "title": "Por Qué Elegir WNSeek Max | Solución de Búsqueda Eficiente",
+      "description": "Descubre por qué WNSeek Max es la mejor herramienta de búsqueda - ahorro de tiempo, mejora de la eficiencia, cobertura completa, protección de la privacidad y actualizaciones continuas.",
+      "keywords": "ahorro de tiempo, eficiencia de búsqueda, cobertura de búsqueda, protección de la privacidad, actualizaciones de búsqueda",
+      "ogImage": "/images/og-whychoose-es.jpg"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes sobre WNSeek Max | FAQ de Herramienta de Búsqueda",
+      "description": "Encuentra respuestas a preguntas frecuentes sobre WNSeek Max. Respondemos a tus preguntas sobre características, compatibilidad, privacidad y uso.",
+      "keywords": "FAQ WNSeek, preguntas herramienta de búsqueda, ayuda búsqueda multiplataforma, guía herramienta de búsqueda",
+      "ogImage": "/images/og-faq-es.jpg"
+    }
+  },
+  "structuredData": {
+    "organization": {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "WNSeek",
+      "url": "https://wnseek.com",
+      "logo": "https://wnseek.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/wnseek",
+        "https://twitter.com/wnseek",
+        "https://www.linkedin.com/company/wnseek"
+      ]
+    },
+    "product": {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "WNSeek Max",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows, Mac, Linux",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Agregador de Búsqueda Multiplataforma"
+    }
+  }
+} 

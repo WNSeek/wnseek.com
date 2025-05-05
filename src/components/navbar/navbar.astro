@@ -3,6 +3,8 @@ import Container from "@components/container.astro";
 import Link from "@components/ui/link.astro";
 import Dropdown from "./dropdown.astro";
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
+import LanguagePicker from "@components/LanguagePicker.astro";
+import { getLangFromUrl, ui } from '../../i18n/ui';
 
 interface MenuItem {
   title: string;
@@ -10,34 +12,43 @@ interface MenuItem {
   children?: { title: string; path: string }[];
   external?: boolean;
   badge?: boolean;
+  key?: string;
 }
+
+const lang = getLangFromUrl(Astro.url);
+const t = ui[lang];
 
 const menuitems: MenuItem[] = [
   {
-    title: "Features",
-    path: "/#features",
+    title: t['nav.features'],
+    path: `/${lang === 'en' ? '' : lang}/#features`,
     badge: true,
+    key: 'nav.features'
   },
   {
-    title: "Use Cases",
-    path: "/#usecases",
+    title: t['nav.useCases'],
+    path: `/${lang === 'en' ? '' : lang}/#usecases`,
     badge: false,
+    key: 'nav.useCases'
   },
   {
-    title: "Why Choose",
-    path: "/#whychoose",
+    title: t['nav.whyChoose'],
+    path: `/${lang === 'en' ? '' : lang}/#whychoose`,
     badge: false,
+    key: 'nav.whyChoose'
   },
   {
-    title: "FAQ",
-    path: "/#faq",
+    title: t['nav.faq'],
+    path: `/${lang === 'en' ? '' : lang}/#faq`,
     badge: false,
+    key: 'nav.faq'
   },
   {
-    title: "Github",
+    title: t['nav.github'],
     path: "https://github.com/WNSeek/wnseek.com",
     external: true,
     badge: false,
+    key: 'nav.github'
   },
 ];
 ---
@@ -46,7 +57,7 @@ const menuitems: MenuItem[] = [
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
-        <a href="/" class="text-lg"
+        <a href={lang === 'en' ? '/' : `/${lang}/`} class="text-lg"
           ><span class="font-bold text-slate-800">WNSeek</span><span
             class="text-slate-500">Max</span
           >
@@ -94,19 +105,58 @@ const menuitems: MenuItem[] = [
             target="_blank"
             rel="noopener noreferrer" 
             class="px-4 py-2 text-sm font-medium text-center text-gray-800 bg-white border border-gray-200 rounded-lg hover:bg-gray-100">
-            Get Extension
+            {t['nav.getExtension']}
           </a>
         </div>
       </MenuItems>
     </Astronav>
     <div class="hidden lg:flex items-center gap-4">
+      <LanguagePicker />
       <a 
         href="https://chromewebstore.google.com/detail/idnggfmcbibblkcobnobnjgameidlhhl" 
         target="_blank"
         rel="noopener noreferrer" 
         class="px-4 py-2 text-sm font-medium text-center text-white bg-black border border-gray-200 rounded-lg hover:bg-gray-800">
-        Get Chrome Extension
+        {t['nav.getChromeExtension']}
       </a>
     </div>
   </header>
 </Container>
+
+<script>
+  // 添加平滑滚动脚本
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('a[href*="#"]');
+    
+    navLinks.forEach(link => {
+      // 确保不是外部链接且href属性存在
+      const href = link.getAttribute('href');
+      if (href && !href.startsWith('http')) {
+        link.addEventListener('click', function(e) {
+          // 检查链接是否只包含#，如果是，则不阻止默认行为
+          if (href === '#') return;
+          
+          e.preventDefault();
+          
+          const hashParts = href.split('#');
+          if (hashParts.length > 1) {
+            const targetId = hashParts[1];
+            if (targetId) {
+              const targetElement = document.getElementById(targetId);
+              if (targetElement) {
+                targetElement.scrollIntoView({
+                  behavior: 'smooth'
+                });
+              } else {
+                // 如果没有找到目标元素，但有路径部分，则导航到该路径
+                if (hashParts[0]) {
+                  window.location.href = hashParts[0];
+                }
+              }
+            }
+          }
+        });
+      }
+    });
+  });
+</script>
